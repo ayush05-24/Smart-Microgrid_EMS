@@ -1,0 +1,12 @@
+{
+  "rmse_kw": 3.5749,
+  "mae_kw": 2.0748,
+  "forecast_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\solar_kw_forecast.csv",
+  "prediction_plot": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\solar_kw_prediction_vs_actual.png",
+  "model_path": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\forecast\\solar_kw_lstm.pt",
+  "x_scaler": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\scalers\\solar_kw_x_scaler.joblib",
+  "y_scaler": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\scalers\\solar_kw_y_scaler.joblib",
+  "device": "cuda",
+  "epochs": 8,
+  "sequence_length": 48
+}

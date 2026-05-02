@@ -1,0 +1,23 @@
+{
+  "horizon_hours": 48,
+  "baseline_cost_inr": 16638.29,
+  "optimized_cost_inr": 15773.67,
+  "cost_savings_inr": 864.62,
+  "cost_savings_pct": 5.2,
+  "renewable_utilization_pct": 99.82,
+  "renewable_share_pct": 24.28,
+  "grid_dependency_pct": 75.97,
+  "self_sufficiency_pct": 24.03,
+  "total_load_kwh": 3880.84,
+  "total_solar_kwh": 944.1,
+  "total_grid_kwh": 2948.22,
+  "battery": {
+    "capacity_kwh": 180.0,
+    "soc_min_pct": 20.0,
+    "soc_max_pct": 77.862,
+    "safe_soc": true,
+    "equivalent_cycles": 0.747,
+    "estimated_health_score": 98.8,
+    "status": "healthy"
+  }
+}

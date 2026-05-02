@@ -1,0 +1,8 @@
+{
+  "model_path": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\ppo\\microgrid_ppo.zip",
+  "total_timesteps": 20000,
+  "reward_trace_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\ppo_reward_trace.csv",
+  "action_sample_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\ppo_action_samples.csv",
+  "reward_plot": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\ppo_reward_curve.png",
+  "action_plot": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\ppo_action_patterns.png"
+}

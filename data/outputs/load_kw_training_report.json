@@ -1,0 +1,12 @@
+{
+  "rmse_kw": 4.7597,
+  "mae_kw": 3.5385,
+  "forecast_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\load_kw_forecast.csv",
+  "prediction_plot": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\load_kw_prediction_vs_actual.png",
+  "model_path": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\forecast\\load_kw_lstm.pt",
+  "x_scaler": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\scalers\\load_kw_x_scaler.joblib",
+  "y_scaler": "C:\\Users\\ayush\\Desktop\\Final Year Project\\models\\scalers\\load_kw_y_scaler.joblib",
+  "device": "cuda",
+  "epochs": 8,
+  "sequence_length": 48
+}

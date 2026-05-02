@@ -1,0 +1,130 @@
+{
+  "horizon_hours": 24,
+  "model_status": {
+    "solar_lstm_available": true,
+    "load_lstm_available": true,
+    "source": "lstm_artifacts"
+  },
+  "records": [
+    {
+      "timestamp": "2025-12-31 05:30:00",
+      "solar_kw": 1.762,
+      "load_kw": 52.614
+    },
+    {
+      "timestamp": "2025-12-31 06:30:00",
+      "solar_kw": 6.914,
+      "load_kw": 60.294
+    },
+    {
+      "timestamp": "2025-12-31 07:30:00",
+      "solar_kw": 19.799,
+      "load_kw": 71.01
+    },
+    {
+      "timestamp": "2025-12-31 08:30:00",
+      "solar_kw": 37.9,
+      "load_kw": 76.886
+    },
+    {
+      "timestamp": "2025-12-31 09:30:00",
+      "solar_kw": 54.685,
+      "load_kw": 74.634
+    },
+    {
+      "timestamp": "2025-12-31 10:30:00",
+      "solar_kw": 75.194,
+      "load_kw": 70.026
+    },
+    {
+      "timestamp": "2025-12-31 11:30:00",
+      "solar_kw": 75.807,
+      "load_kw": 65.13
+    },
+    {
+      "timestamp": "2025-12-31 12:30:00",
+      "solar_kw": 63.488,
+      "load_kw": 62.709
+    },
+    {
+      "timestamp": "2025-12-31 13:30:00",
+      "solar_kw": 40.202,
+      "load_kw": 61.471
+    },
+    {
+      "timestamp": "2025-12-31 14:30:00",
+      "solar_kw": 30.035,
+      "load_kw": 62.425
+    },
+    {
+      "timestamp": "2025-12-31 15:30:00",
+      "solar_kw": 17.817,
+      "load_kw": 64.491
+    },
+    {
+      "timestamp": "2025-12-31 16:30:00",
+      "solar_kw": 7.181,
+      "load_kw": 67.559
+    },
+    {
+      "timestamp": "2025-12-31 17:30:00",
+      "solar_kw": 2.701,
+      "load_kw": 72.494
+    },
+    {
+      "timestamp": "2025-12-31 18:30:00",
+      "solar_kw": 0.433,
+      "load_kw": 78.752
+    },
+    {
+      "timestamp": "2025-12-31 19:30:00",
+      "solar_kw": 0.118,
+      "load_kw": 90.138
+    },
+    {
+      "timestamp": "2025-12-31 20:30:00",
+      "solar_kw": -0.165,
+      "load_kw": 93.041
+    },
+    {
+      "timestamp": "2025-12-31 21:30:00",
+      "solar_kw": -0.113,
+      "load_kw": 84.013
+    },
+    {
+      "timestamp": "2025-12-31 22:30:00",
+      "solar_kw": 0.088,
+      "load_kw": 69.668
+    },
+    {
+      "timestamp": "2025-12-31 23:30:00",
+      "solar_kw": -0.451,
+      "load_kw": 53.386
+    },
+    {
+      "timestamp": "2026-01-01 00:30:00",
+      "solar_kw": -0.497,
+      "load_kw": 44.33
+    },
+    {
+      "timestamp": "2026-01-01 01:30:00",
+      "solar_kw": -0.429,
+      "load_kw": 43.081
+    },
+    {
+      "timestamp": "2026-01-01 02:30:00",
+      "solar_kw": -0.27,
+      "load_kw": 43.213
+    },
+    {
+      "timestamp": "2026-01-01 03:30:00",
+      "solar_kw": -0.278,
+      "load_kw": 44.148
+    },
+    {
+      "timestamp": "2026-01-01 04:30:00",
+      "solar_kw": 0.157,
+      "load_kw": 46.605
+    }
+  ]
+}

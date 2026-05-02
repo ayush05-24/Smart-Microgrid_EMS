@@ -1,0 +1,61 @@
+{
+  "rows": 52608,
+  "start_timestamp": "2020-01-01 05:30:00",
+  "end_timestamp": "2026-01-01 04:30:00",
+  "duplicate_timestamps": 0,
+  "missing_values_after_cleaning": {
+    "ghi": 0,
+    "dni": 0,
+    "diffuse_irradiance": 0,
+    "temperature_c": 0,
+    "wind_speed_mps": 0,
+    "humidity_pct": 0,
+    "precipitation_mm": 0
+  },
+  "feature_ranges": {
+    "ghi": {
+      "min": 0.0,
+      "max": 1043.15,
+      "mean": 216.9669
+    },
+    "dni": {
+      "min": 0.0,
+      "max": 1100.0,
+      "mean": 128.9846
+    },
+    "diffuse_irradiance": {
+      "min": 0.0,
+      "max": 540.25,
+      "mean": 104.0249
+    },
+    "temperature_c": {
+      "min": 13.43,
+      "max": 44.52,
+      "mean": 26.8362
+    },
+    "wind_speed_mps": {
+      "min": 0.03,
+      "max": 14.63,
+      "mean": 3.238
+    },
+    "humidity_pct": {
+      "min": 11.17,
+      "max": 100.0,
+      "mean": 73.7525
+    },
+    "precipitation_mm": {
+      "min": 0.0,
+      "max": 300.0,
+      "mean": 3.5717
+    }
+  },
+  "outputs": {
+    "cleaned_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\processed\\cleaned_nasa_power.csv",
+    "normalized_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\processed\\cleaned_nasa_power_normalized.csv",
+    "plots": [
+      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\solar_trends.png",
+      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\temperature_trends.png",
+      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\wind_trends.png"
+    ]
+  }
+}

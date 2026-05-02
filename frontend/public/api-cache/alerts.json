@@ -1,0 +1,17 @@
+{
+  "alerts": [
+    {
+      "severity": "critical",
+      "type": "battery_low_soc",
+      "timestamp": "2025-12-30 19:30:00",
+      "message": "Battery near minimum safe SoC: 20.0%."
+    },
+    {
+      "severity": "critical",
+      "type": "battery_low_soc",
+      "timestamp": "2025-12-30 20:30:00",
+      "message": "Battery near minimum safe SoC: 20.0%."
+    }
+  ],
+  "source": "cached_snapshot"
+}
