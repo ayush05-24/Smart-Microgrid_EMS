@@ -19,6 +19,7 @@ from ..config import BATTERY, EMS_DATASET
 class DispatchStep:
     action_name: str
     solar_kw: float
+    wind_kw: float
     load_kw: float
     grid_kw: float
     battery_power_kw: float
@@ -38,7 +39,7 @@ class MicrogridPPOEnv(gym.Env):
         self.df = pd.read_csv(dataset_path, parse_dates=["timestamp"]).sort_values("timestamp").reset_index(drop=True)
         self.episode_length = min(episode_length, len(self.df) - 2)
         self.action_space = spaces.Discrete(3)
-        self.observation_space = spaces.Box(low=0.0, high=1.0, shape=(8,), dtype=np.float32)
+        self.observation_space = spaces.Box(low=0.0, high=1.0, shape=(9,), dtype=np.float32)
         self.start_index = 0
         self.index = 0
         self.energy_kwh = BATTERY.capacity_kwh * BATTERY.initial_soc_pct / 100.0
@@ -56,6 +57,7 @@ class MicrogridPPOEnv(gym.Env):
     def step(self, action: int):
         row = self.df.iloc[self.index]
         solar_kw = float(row.solar_kw)
+        wind_kw = float(row.wind_kw)
         load_kw = float(row.load_kw)
         tariff = float(row.tariff_inr_kwh)
         min_energy = BATTERY.capacity_kwh * BATTERY.min_soc_pct / 100.0
@@ -63,10 +65,10 @@ class MicrogridPPOEnv(gym.Env):
 
         violation = False
         battery_power_kw = 0.0
-        renewable_used_kw = min(solar_kw, load_kw)
+        renewable_used_kw = min(solar_kw + wind_kw, load_kw)
 
         if action == 1:
-            surplus_kw = max(solar_kw - load_kw, 0.0)
+            surplus_kw = max(solar_kw + wind_kw - load_kw, 0.0)
             room_kwh = max((max_energy - self.energy_kwh) / BATTERY.charge_efficiency, 0.0)
             charge_kw = min(BATTERY.max_charge_kw, room_kwh, surplus_kw if surplus_kw > 0 else 12.0)
             if charge_kw <= 0.0 or self.energy_kwh >= max_energy - 1e-6:
@@ -74,7 +76,7 @@ class MicrogridPPOEnv(gym.Env):
             self.energy_kwh += charge_kw * BATTERY.charge_efficiency
             battery_power_kw = -charge_kw
         elif action == 2:
-            deficit_kw = max(load_kw - solar_kw, 0.0)
+            deficit_kw = max(load_kw - solar_kw - wind_kw, 0.0)
             available_kwh = max((self.energy_kwh - min_energy) * BATTERY.discharge_efficiency, 0.0)
             discharge_kw = min(BATTERY.max_discharge_kw, available_kwh, deficit_kw if deficit_kw > 0 else 10.0)
             if discharge_kw <= 0.0 or self.energy_kwh <= min_energy + 1e-6:
@@ -85,7 +87,7 @@ class MicrogridPPOEnv(gym.Env):
 
         self.energy_kwh = float(np.clip(self.energy_kwh, min_energy, max_energy))
         soc_pct = self.energy_kwh / BATTERY.capacity_kwh * 100.0
-        grid_kw = max(load_kw - solar_kw - max(battery_power_kw, 0.0) + max(-battery_power_kw, 0.0), 0.0)
+        grid_kw = max(load_kw - solar_kw - wind_kw - max(battery_power_kw, 0.0) + max(-battery_power_kw, 0.0), 0.0)
         cost_inr = grid_kw * tariff
         violation_penalty = 45.0 if violation else 0.0
         degradation_penalty = abs(battery_power_kw) * BATTERY.degradation_cost_inr_per_kwh
@@ -96,6 +98,7 @@ class MicrogridPPOEnv(gym.Env):
         self.last_step = DispatchStep(
             action_name=self.ACTIONS[int(action)],
             solar_kw=solar_kw,
+            wind_kw=wind_kw,
             load_kw=load_kw,
             grid_kw=grid_kw,
             battery_power_kw=battery_power_kw,
@@ -118,6 +121,7 @@ class MicrogridPPOEnv(gym.Env):
         return np.array(
             [
                 float(row.solar_kw) / 140.0,
+                float(row.wind_kw) / 30.0,
                 float(row.load_kw) / 180.0,
                 (self.energy_kwh / BATTERY.capacity_kwh),
                 (float(row.tariff_inr_kwh) - 2.0) / 8.0,

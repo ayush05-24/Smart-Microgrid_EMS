@@ -18,6 +18,7 @@ def export_for_matlab(df: pd.DataFrame, horizon_hours: int = 24 * 7) -> dict[str
         {
             "timestamp": work["timestamp"],
             "solar_kw": work["solar_kw"],
+            "wind_kw": work["wind_kw"],
             "load_kw": work["load_kw"],
             "tariff_inr_kwh": work["tariff_inr_kwh"],
             "battery_soc_pct": dispatch["battery_soc_pct"],
@@ -37,6 +38,7 @@ def export_for_matlab(df: pd.DataFrame, horizon_hours: int = 24 * 7) -> dict[str
         {
             "time_hours": matlab_time_hours,
             "solar_kw": export_df["solar_kw"].to_numpy(dtype=float),
+            "wind_kw": export_df["wind_kw"].to_numpy(dtype=float),
             "load_kw": export_df["load_kw"].to_numpy(dtype=float),
             "tariff_inr_kwh": export_df["tariff_inr_kwh"].to_numpy(dtype=float),
             "battery_soc_pct": export_df["battery_soc_pct"].to_numpy(dtype=float),
@@ -57,7 +59,7 @@ def export_for_matlab(df: pd.DataFrame, horizon_hours: int = 24 * 7) -> dict[str
 def _write_reference_comparison(export_df: pd.DataFrame, path: Path) -> None:
     reference = export_df.copy()
     reference["simulink_reference_grid_kw"] = (
-        reference["load_kw"] - reference["solar_kw"] - reference["battery_power_kw"].clip(lower=0)
+        reference["load_kw"] - reference["solar_kw"] - reference["wind_kw"] - reference["battery_power_kw"].clip(lower=0)
         + (-reference["battery_power_kw"].clip(upper=0))
     ).clip(lower=0)
     reference["grid_kw_error"] = reference["grid_kw"] - reference["simulink_reference_grid_kw"]
@@ -73,12 +75,14 @@ data = load('microgrid_predictions_dispatch.mat');
 
 time = data.time_hours(:);
 solar_ts = timeseries(data.solar_kw(:), time, 'Name', 'PV_kW');
+wind_ts = timeseries(data.wind_kw(:), time, 'Name', 'Wind_kW');
 load_ts = timeseries(data.load_kw(:), time, 'Name', 'Load_kW');
 soc_ts = timeseries(data.battery_soc_pct(:), time, 'Name', 'Battery_SoC_pct');
 battery_power_ts = timeseries(data.battery_power_kw(:), time, 'Name', 'BESS_Power_kW');
 grid_ts = timeseries(data.grid_kw(:), time, 'Name', 'EMS_Grid_kW');
 
 assignin('base', 'solar_ts', solar_ts);
+assignin('base', 'wind_ts', wind_ts);
 assignin('base', 'load_ts', load_ts);
 assignin('base', 'soc_ts', soc_ts);
 assignin('base', 'battery_power_ts', battery_power_ts);

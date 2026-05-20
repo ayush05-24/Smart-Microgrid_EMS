@@ -16,9 +16,10 @@ def build_dispatch_table(df: pd.DataFrame, horizon_hours: int = 24) -> pd.DataFr
     records: list[dict[str, object]] = []
     for idx, row in enumerate(work.itertuples(index=False)):
         solar_kw = float(row.solar_kw)
+        wind_kw = float(row.wind_kw)
         load_kw = float(row.load_kw)
         tariff = float(row.tariff_inr_kwh)
-        surplus_kw = solar_kw - load_kw
+        surplus_kw = solar_kw + wind_kw - load_kw
         action = "idle"
         reason = "Hold battery inside safe band; no economic dispatch needed."
         battery_power_kw = 0.0
@@ -28,7 +29,7 @@ def build_dispatch_table(df: pd.DataFrame, horizon_hours: int = 24) -> pd.DataFr
             energy += charge_kw * BATTERY.charge_efficiency
             battery_power_kw = -charge_kw
             action = "charge"
-            reason = "Solar surplus available; charging BESS without grid import."
+            reason = "Renewable surplus available; charging BESS without grid import."
         elif (tariff >= 8.0 or load_kw >= MICROGRID.peak_load_risk_kw) and surplus_kw < -3.0 and energy > min_energy + 1e-6:
             discharge_kw = min(-surplus_kw, BATTERY.max_discharge_kw, (energy - min_energy) * BATTERY.discharge_efficiency)
             energy -= discharge_kw / BATTERY.discharge_efficiency
@@ -39,7 +40,7 @@ def build_dispatch_table(df: pd.DataFrame, horizon_hours: int = 24) -> pd.DataFr
             lookahead = work.iloc[idx + 1 : idx + 19]
             future_peak_need = bool(
                 not lookahead.empty
-                and ((lookahead["tariff_inr_kwh"] >= 8.0) & (lookahead["load_kw"] > lookahead["solar_kw"] + 5.0)).any()
+                and ((lookahead["tariff_inr_kwh"] >= 8.0) & (lookahead["load_kw"] > lookahead["solar_kw"] + lookahead["wind_kw"] + 5.0)).any()
             )
 
         if action == "idle" and tariff <= 3.0 and future_peak_need and energy < (BATTERY.capacity_kwh * 0.75):
@@ -50,15 +51,16 @@ def build_dispatch_table(df: pd.DataFrame, horizon_hours: int = 24) -> pd.DataFr
             reason = "Off-peak tariff; pre-charging BESS for peak-period cost reduction."
 
         soc_pct = energy / BATTERY.capacity_kwh * 100.0
-        grid_kw = max(load_kw - solar_kw - max(battery_power_kw, 0.0) + max(-battery_power_kw, 0.0), 0.0)
-        renewable_used_kw = min(solar_kw, load_kw + max(-battery_power_kw, 0.0))
-        curtailed_kw = max(solar_kw - renewable_used_kw, 0.0)
+        grid_kw = max(load_kw - solar_kw - wind_kw - max(battery_power_kw, 0.0) + max(-battery_power_kw, 0.0), 0.0)
+        renewable_used_kw = min(solar_kw + wind_kw, load_kw + max(-battery_power_kw, 0.0))
+        curtailed_kw = max(solar_kw + wind_kw - renewable_used_kw, 0.0)
 
         records.append(
             {
                 "timestamp": row.timestamp,
                 "time": str(row.timestamp),
                 "solar_kw": round(solar_kw, 3),
+                "wind_kw": round(wind_kw, 3),
                 "load_kw": round(load_kw, 3),
                 "battery_soc_pct": round(soc_pct, 3),
                 "battery_power_kw": round(battery_power_kw, 3),

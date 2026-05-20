@@ -13,6 +13,7 @@ import {
   Radio,
   RefreshCcw,
   ShieldCheck,
+  Wind,
   Zap
 } from "lucide-react";
 import {
@@ -37,6 +38,7 @@ import {
   getApiMode,
   getForecast,
   getLiveStatus,
+  getLiveSnapshot,
   getMetrics,
   getOptimization,
   runScenario,
@@ -70,12 +72,13 @@ function App() {
 
   async function refresh() {
     setStatus("refreshing");
+    const isLive = liveStatus.running;
     const results = await Promise.allSettled([
       getForecast(24),
       getOptimization(24),
-      getMetrics(liveStatus.running ? 120 : 168),
+      getMetrics(isLive ? 120 : 168),
       getAlerts(48),
-      getLiveStatus()
+      isLive ? getLiveSnapshot(120) : getLiveStatus()
     ]);
     const [forecastResult, optimizationResult, metricsResult, alertsResult, liveResult] = results;
     const failed = results.filter((result) => result.status === "rejected");
@@ -143,8 +146,13 @@ function App() {
     return () => window.clearInterval(timer);
   }, [pollMs]);
 
-  const current = dispatch[0] || liveStatus.latest || {};
-  const powerSeries = useMemo(() => dispatch.slice(0, 24), [dispatch]);
+  const current = liveStatus.running ? (liveStatus.latest || {}) : (dispatch[0] || {});
+  const powerSeries = useMemo(() => {
+    if (liveStatus.running && liveStatus.records_window && liveStatus.records_window.length > 0) {
+      return liveStatus.records_window.slice(-24);
+    }
+    return dispatch.slice(0, 24);
+  }, [liveStatus.running, liveStatus.records_window, dispatch]);
   const savings = Number(metrics?.cost_savings_pct || 0);
   const batterySafe = metrics?.battery?.safe_soc !== false;
 
@@ -198,6 +206,7 @@ function App() {
 
       <section className="status-strip">
         <Kpi icon={<CloudSun />} label="Solar" value={`${number(current.solar_kw)} kW`} hint="PV generation" tone="solar" />
+        <Kpi icon={<Wind />} label="Wind" value={`${number(current.wind_kw)} kW`} hint="Turbine generation" tone="wind" />
         <Kpi icon={<Bolt />} label="Load" value={`${number(current.load_kw)} kW`} hint="Facility demand" tone="load" />
         <Kpi icon={<BatteryCharging />} label="BESS SoC" value={`${number(current.battery_soc_pct)}%`} hint={batterySafe ? "Inside safe band" : "Limit risk"} tone="battery" />
         <Kpi icon={<PlugZap />} label="Grid" value={`${number(current.grid_kw)} kW`} hint="Import power" tone="grid" />
@@ -218,6 +227,7 @@ function App() {
                 <Tooltip labelFormatter={formatTime} />
                 <Area yAxisId="left" type="monotone" dataKey="load_kw" name="Load kW" stroke="#1971c2" fill="#d0ebff" strokeWidth={2} />
                 <Area yAxisId="left" type="monotone" dataKey="solar_kw" name="Solar kW" stroke="#f59f00" fill="#fff3bf" strokeWidth={2} />
+                <Area yAxisId="left" type="monotone" dataKey="wind_kw" name="Wind kW" stroke="#0f766e" fill="#ccfbf1" strokeWidth={2} />
                 <Line yAxisId="left" type="monotone" dataKey="grid_kw" name="Grid kW" stroke="#c92a2a" strokeWidth={2} dot={false} />
                 <Line yAxisId="right" type="monotone" dataKey="battery_soc_pct" name="SoC %" stroke="#2f9e44" strokeWidth={2} dot={false} />
               </AreaChart>
@@ -255,6 +265,7 @@ function App() {
                 <YAxis />
                 <Tooltip labelFormatter={formatTime} />
                 <Line type="monotone" dataKey="solar_kw" name="Solar kW" stroke="#f59f00" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="wind_kw" name="Wind kW" stroke="#0f766e" strokeWidth={2} dot={false} />
                 <Line type="monotone" dataKey="load_kw" name="Load kW" stroke="#1971c2" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
@@ -347,6 +358,7 @@ function App() {
                 <tr>
                   <th>Time</th>
                   <th>Solar</th>
+                  <th>Wind</th>
                   <th>Load</th>
                   <th>SoC</th>
                   <th>Grid</th>
@@ -355,17 +367,25 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {dispatch.slice(0, 14).map((row) => (
-                  <tr key={row.time}>
-                    <td>{shortTime(row.time)}</td>
-                    <td>{number(row.solar_kw)} kW</td>
-                    <td>{number(row.load_kw)} kW</td>
-                    <td>{number(row.battery_soc_pct)}%</td>
-                    <td>{number(row.grid_kw)} kW</td>
-                    <td><span className={`pill ${row.action}`}>{row.action}</span></td>
-                    <td>{row.reason}</td>
-                  </tr>
-                ))}
+                {(liveStatus.running && liveStatus.records_window && liveStatus.records_window.length > 0
+                  ? [...liveStatus.records_window].reverse().slice(0, 14)
+                  : dispatch.slice(0, 14)
+                ).map((row, idx) => {
+                  const action = row.action || row.operator_action || "idle";
+                  const reason = row.reason || `Telemetry signal: BESS is ${action}.`;
+                  return (
+                    <tr key={row.time || row.timestamp || idx}>
+                      <td>{shortTime(row.time || row.timestamp)}</td>
+                      <td>{number(row.solar_kw)} kW</td>
+                      <td>{number(row.wind_kw)} kW</td>
+                      <td>{number(row.load_kw)} kW</td>
+                      <td>{number(row.battery_soc_pct)}%</td>
+                      <td>{number(row.grid_kw)} kW</td>
+                      <td><span className={`pill ${action}`}>{action}</span></td>
+                      <td>{reason}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

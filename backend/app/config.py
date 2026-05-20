@@ -51,11 +51,13 @@ class BatteryConfig:
 class MicrogridConfig:
     pv_capacity_kw: float = 140.0
     pv_performance_ratio: float = 0.82
+    wind_capacity_kw: float = 30.0
     load_min_kw: float = 24.0
     load_max_kw: float = 175.0
     peak_load_risk_kw: float = 145.0
     renewable_drop_kw: float = 28.0
     forecast_horizon_hours: int = 24
+
 
 
 BATTERY = BatteryConfig()

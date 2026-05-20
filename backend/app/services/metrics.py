@@ -18,7 +18,7 @@ def compute_performance_metrics(df: pd.DataFrame, horizon_hours: int = 24 * 7, p
     work = df.head(horizon_hours).copy().reset_index(drop=True)
     dispatch_df = build_dispatch_table(work, horizon_hours=len(work))
 
-    baseline_grid_kw = (work["load_kw"] - work["solar_kw"]).clip(lower=0)
+    baseline_grid_kw = (work["load_kw"] - work["solar_kw"] - work["wind_kw"]).clip(lower=0)
     baseline_cost = float((baseline_grid_kw * work["tariff_inr_kwh"]).sum())
     optimized_cost = float(dispatch_df["cost_inr"].sum())
     savings = baseline_cost - optimized_cost
@@ -26,9 +26,11 @@ def compute_performance_metrics(df: pd.DataFrame, horizon_hours: int = 24 * 7, p
 
     total_load = float(work["load_kw"].sum())
     total_solar = float(work["solar_kw"].sum())
+    total_wind = float(work["wind_kw"].sum())
+    total_renewables = total_solar + total_wind
     total_grid = float(dispatch_df["grid_kw"].sum())
     renewable_used = float(dispatch_df["renewable_used_kw"].sum())
-    renewable_utilization_pct = (renewable_used / total_solar * 100.0) if total_solar > 0 else 0.0
+    renewable_utilization_pct = (renewable_used / total_renewables * 100.0) if total_renewables > 0 else 0.0
     grid_dependency_pct = (total_grid / total_load * 100.0) if total_load > 0 else 0.0
     renewable_share_pct = (renewable_used / total_load * 100.0) if total_load > 0 else 0.0
     self_sufficiency_pct = max(0.0, 100.0 - grid_dependency_pct)
@@ -45,6 +47,7 @@ def compute_performance_metrics(df: pd.DataFrame, horizon_hours: int = 24 * 7, p
         "self_sufficiency_pct": round(self_sufficiency_pct, 2),
         "total_load_kwh": round(total_load, 2),
         "total_solar_kwh": round(total_solar, 2),
+        "total_wind_kwh": round(total_wind, 2),
         "total_grid_kwh": round(total_grid, 2),
         "battery": battery_health_report(dispatch_df),
     }

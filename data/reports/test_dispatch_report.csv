@@ -1,169 +1,169 @@
-timestamp,time,solar_kw,load_kw,battery_soc_pct,battery_power_kw,grid_kw,tariff_inr_kwh,cost_inr,renewable_used_kw,curtailed_kw,action,reason
-2025-12-25 05:30:00,2025-12-25 05:30:00,0.0,56.358,29.644,-18.0,74.358,2.6,193.331,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-25 06:30:00,2025-12-25 06:30:00,4.45,59.087,29.644,0.0,54.637,5.6,305.967,4.45,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 07:30:00,2025-12-25 07:30:00,25.264,67.792,29.644,0.0,42.528,5.6,238.157,25.264,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 08:30:00,2025-12-25 08:30:00,45.306,83.597,29.644,0.0,38.291,5.6,214.43,45.306,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 09:30:00,2025-12-25 09:30:00,56.513,75.83,29.644,0.0,19.317,5.6,108.175,56.513,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 10:30:00,2025-12-25 10:30:00,63.864,66.662,29.644,0.0,2.798,5.6,15.669,63.864,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 11:30:00,2025-12-25 11:30:00,81.267,64.179,38.799,-17.088,0.0,5.6,0.0,81.267,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-25 12:30:00,2025-12-25 12:30:00,71.629,59.992,45.033,-11.637,0.0,5.6,0.0,71.629,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-25 13:30:00,2025-12-25 13:30:00,63.655,60.712,45.033,0.0,0.0,5.6,0.0,60.712,2.943,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 14:30:00,2025-12-25 14:30:00,41.713,71.247,45.033,0.0,29.534,5.6,165.39,41.713,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 15:30:00,2025-12-25 15:30:00,25.178,59.108,45.033,0.0,33.93,5.6,190.008,25.178,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 16:30:00,2025-12-25 16:30:00,9.324,58.976,45.033,0.0,49.652,5.6,278.051,9.324,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 17:30:00,2025-12-25 17:30:00,0.368,74.601,45.033,0.0,74.233,5.6,415.705,0.368,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 18:30:00,2025-12-25 18:30:00,0.0,78.636,20.0,43.454,35.182,9.2,323.672,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-25 19:30:00,2025-12-25 19:30:00,0.0,91.032,20.0,0.0,91.032,9.2,837.494,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 20:30:00,2025-12-25 20:30:00,0.0,95.297,20.0,0.0,95.297,9.2,876.732,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 21:30:00,2025-12-25 21:30:00,0.0,79.323,20.0,0.0,79.323,9.2,729.772,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 22:30:00,2025-12-25 22:30:00,0.0,88.917,20.0,0.0,88.917,2.6,231.184,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-25 23:30:00,2025-12-25 23:30:00,0.0,55.578,20.0,0.0,55.578,2.6,144.503,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 00:30:00,2025-12-26 00:30:00,0.0,49.558,29.644,-18.0,67.558,2.6,175.651,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 01:30:00,2025-12-26 01:30:00,0.0,40.654,39.287,-18.0,58.654,2.6,152.5,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 02:30:00,2025-12-26 02:30:00,0.0,49.349,48.931,-18.0,67.349,2.6,175.107,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 03:30:00,2025-12-26 03:30:00,0.0,50.658,58.575,-18.0,68.658,2.6,178.511,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 04:30:00,2025-12-26 04:30:00,0.0,44.768,68.218,-18.0,62.768,2.6,163.197,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 05:30:00,2025-12-26 05:30:00,0.0,51.036,77.862,-18.0,69.036,2.6,179.494,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-26 06:30:00,2025-12-26 06:30:00,4.992,59.906,77.862,0.0,54.914,5.6,307.518,4.992,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 07:30:00,2025-12-26 07:30:00,24.139,76.289,77.862,0.0,52.15,5.6,292.04,24.139,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 08:30:00,2025-12-26 08:30:00,45.622,78.464,77.862,0.0,32.842,5.6,183.915,45.622,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 09:30:00,2025-12-26 09:30:00,59.453,77.684,77.862,0.0,18.231,5.6,102.094,59.453,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 10:30:00,2025-12-26 10:30:00,72.186,68.067,77.862,0.0,0.0,5.6,0.0,68.067,4.119,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 11:30:00,2025-12-26 11:30:00,69.348,64.563,77.862,0.0,0.0,5.6,0.0,64.563,4.785,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 12:30:00,2025-12-26 12:30:00,67.256,63.075,77.862,0.0,0.0,5.6,0.0,63.075,4.181,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 13:30:00,2025-12-26 13:30:00,62.686,59.56,77.862,0.0,0.0,5.6,0.0,59.56,3.126,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 14:30:00,2025-12-26 14:30:00,47.973,68.443,77.862,0.0,20.47,5.6,114.632,47.973,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 15:30:00,2025-12-26 15:30:00,27.411,61.853,77.862,0.0,34.442,5.6,192.875,27.411,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 16:30:00,2025-12-26 16:30:00,11.049,67.615,77.862,0.0,56.566,5.6,316.77,11.049,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 17:30:00,2025-12-26 17:30:00,0.476,65.18,77.862,0.0,64.704,5.6,362.342,0.476,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 18:30:00,2025-12-26 18:30:00,0.0,81.605,44.449,58.0,23.605,9.2,217.166,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-26 19:30:00,2025-12-26 19:30:00,0.0,92.766,20.0,42.44,50.326,9.2,462.999,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-26 20:30:00,2025-12-26 20:30:00,0.0,92.884,20.0,0.0,92.884,9.2,854.533,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 21:30:00,2025-12-26 21:30:00,0.0,87.914,20.0,0.0,87.914,9.2,808.809,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 22:30:00,2025-12-26 22:30:00,0.0,67.196,20.0,0.0,67.196,2.6,174.71,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-26 23:30:00,2025-12-26 23:30:00,0.0,57.662,20.0,0.0,57.662,2.6,149.921,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 00:30:00,2025-12-27 00:30:00,0.0,30.935,29.644,-18.0,48.935,2.6,127.231,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 01:30:00,2025-12-27 01:30:00,0.0,37.23,39.287,-18.0,55.23,2.6,143.598,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 02:30:00,2025-12-27 02:30:00,0.0,34.381,48.931,-18.0,52.381,2.6,136.191,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 03:30:00,2025-12-27 03:30:00,0.0,37.597,58.575,-18.0,55.597,2.6,144.552,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 04:30:00,2025-12-27 04:30:00,0.0,44.421,68.218,-18.0,62.421,2.6,162.295,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 05:30:00,2025-12-27 05:30:00,0.0,50.312,77.862,-18.0,68.312,2.6,177.611,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-27 06:30:00,2025-12-27 06:30:00,4.874,48.311,77.862,0.0,43.437,5.6,243.247,4.874,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 07:30:00,2025-12-27 07:30:00,28.032,66.511,77.862,0.0,38.479,5.6,215.482,28.032,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 08:30:00,2025-12-27 08:30:00,49.754,73.393,77.862,0.0,23.639,5.6,132.378,49.754,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 09:30:00,2025-12-27 09:30:00,68.632,67.857,77.862,0.0,0.0,5.6,0.0,67.857,0.775,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 10:30:00,2025-12-27 10:30:00,82.806,65.094,87.351,-17.712,0.0,5.6,0.0,82.806,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-27 11:30:00,2025-12-27 11:30:00,87.806,53.909,90.0,-4.944,0.0,5.6,0.0,58.853,28.953,charge,Solar surplus available; charging BESS without grid import.
-2025-12-27 12:30:00,2025-12-27 12:30:00,85.125,52.053,90.0,0.0,0.0,5.6,0.0,52.053,33.072,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 13:30:00,2025-12-27 13:30:00,72.625,52.467,90.0,0.0,0.0,5.6,0.0,52.467,20.158,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 14:30:00,2025-12-27 14:30:00,52.385,57.27,90.0,0.0,4.885,5.6,27.356,52.385,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 15:30:00,2025-12-27 15:30:00,32.414,54.718,90.0,0.0,22.304,5.6,124.902,32.414,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 16:30:00,2025-12-27 16:30:00,12.754,53.823,90.0,0.0,41.069,5.6,229.986,12.754,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 17:30:00,2025-12-27 17:30:00,0.545,58.601,90.0,0.0,58.056,5.6,325.114,0.545,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 18:30:00,2025-12-27 18:30:00,0.0,69.477,56.587,58.0,11.477,9.2,105.588,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-27 19:30:00,2025-12-27 19:30:00,0.0,75.364,23.174,58.0,17.364,9.2,159.749,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-27 20:30:00,2025-12-27 20:30:00,0.0,83.501,20.0,5.51,77.991,9.2,717.517,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-27 21:30:00,2025-12-27 21:30:00,0.0,78.663,20.0,0.0,78.663,9.2,723.7,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 22:30:00,2025-12-27 22:30:00,0.0,65.305,20.0,0.0,65.305,2.6,169.793,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-27 23:30:00,2025-12-27 23:30:00,0.0,60.339,20.0,0.0,60.339,2.6,156.881,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 00:30:00,2025-12-28 00:30:00,0.0,38.777,29.644,-18.0,56.777,2.6,147.62,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 01:30:00,2025-12-28 01:30:00,0.0,43.871,39.287,-18.0,61.871,2.6,160.865,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 02:30:00,2025-12-28 02:30:00,0.0,39.07,48.931,-18.0,57.07,2.6,148.382,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 03:30:00,2025-12-28 03:30:00,0.0,38.104,58.575,-18.0,56.104,2.6,145.87,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 04:30:00,2025-12-28 04:30:00,0.0,41.207,68.218,-18.0,59.207,2.6,153.938,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 05:30:00,2025-12-28 05:30:00,0.0,45.949,77.862,-18.0,63.949,2.6,166.267,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-28 06:30:00,2025-12-28 06:30:00,4.779,53.107,77.862,0.0,48.328,5.6,270.637,4.779,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 07:30:00,2025-12-28 07:30:00,27.793,58.514,77.862,0.0,30.721,5.6,172.038,27.793,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 08:30:00,2025-12-28 08:30:00,49.574,65.068,77.862,0.0,15.494,5.6,86.766,49.574,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 09:30:00,2025-12-28 09:30:00,70.464,70.687,77.862,0.0,0.223,5.6,1.249,70.464,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 10:30:00,2025-12-28 10:30:00,83.316,63.261,88.607,-20.055,0.0,5.6,0.0,83.316,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-28 11:30:00,2025-12-28 11:30:00,88.511,61.587,90.0,-2.601,0.0,5.6,0.0,64.188,24.323,charge,Solar surplus available; charging BESS without grid import.
-2025-12-28 12:30:00,2025-12-28 12:30:00,86.137,52.477,90.0,0.0,0.0,5.6,0.0,52.477,33.66,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 13:30:00,2025-12-28 13:30:00,74.769,52.55,90.0,0.0,0.0,5.6,0.0,52.55,22.219,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 14:30:00,2025-12-28 14:30:00,57.205,50.749,90.0,0.0,0.0,5.6,0.0,50.749,6.456,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 15:30:00,2025-12-28 15:30:00,35.084,58.754,90.0,0.0,23.67,5.6,132.552,35.084,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 16:30:00,2025-12-28 16:30:00,12.84,53.206,90.0,0.0,40.366,5.6,226.05,12.84,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 17:30:00,2025-12-28 17:30:00,0.537,60.866,90.0,0.0,60.329,5.6,337.842,0.537,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 18:30:00,2025-12-28 18:30:00,0.0,70.521,56.587,58.0,12.521,9.2,115.193,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-28 19:30:00,2025-12-28 19:30:00,0.0,72.63,23.174,58.0,14.63,9.2,134.596,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-28 20:30:00,2025-12-28 20:30:00,0.0,83.409,20.0,5.51,77.899,9.2,716.671,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-28 21:30:00,2025-12-28 21:30:00,0.0,77.566,20.0,0.0,77.566,9.2,713.607,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 22:30:00,2025-12-28 22:30:00,0.0,62.437,20.0,0.0,62.437,2.6,162.336,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-28 23:30:00,2025-12-28 23:30:00,0.0,49.388,20.0,0.0,49.388,2.6,128.409,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 00:30:00,2025-12-29 00:30:00,0.0,41.752,29.644,-18.0,59.752,2.6,155.355,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 01:30:00,2025-12-29 01:30:00,0.0,47.457,39.287,-18.0,65.457,2.6,170.188,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 02:30:00,2025-12-29 02:30:00,0.0,43.364,48.931,-18.0,61.364,2.6,159.546,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 03:30:00,2025-12-29 03:30:00,0.0,43.848,58.575,-18.0,61.848,2.6,160.805,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 04:30:00,2025-12-29 04:30:00,0.0,43.511,68.218,-18.0,61.511,2.6,159.929,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 05:30:00,2025-12-29 05:30:00,0.0,41.481,77.862,-18.0,59.481,2.6,154.651,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-29 06:30:00,2025-12-29 06:30:00,3.311,64.689,77.862,0.0,61.378,5.6,343.717,3.311,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 07:30:00,2025-12-29 07:30:00,18.357,71.288,77.862,0.0,52.931,5.6,296.414,18.357,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 08:30:00,2025-12-29 08:30:00,41.741,74.772,77.862,0.0,33.031,5.6,184.974,41.741,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 09:30:00,2025-12-29 09:30:00,70.114,83.205,77.862,0.0,13.091,5.6,73.31,70.114,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 10:30:00,2025-12-29 10:30:00,82.99,70.108,84.764,-12.882,0.0,5.6,0.0,82.99,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-29 11:30:00,2025-12-29 11:30:00,78.166,62.189,90.0,-9.774,0.0,5.6,0.0,71.963,6.203,charge,Solar surplus available; charging BESS without grid import.
-2025-12-29 12:30:00,2025-12-29 12:30:00,72.896,64.759,90.0,0.0,0.0,5.6,0.0,64.759,8.137,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 13:30:00,2025-12-29 13:30:00,63.874,62.937,90.0,0.0,0.0,5.6,0.0,62.937,0.937,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 14:30:00,2025-12-29 14:30:00,47.365,63.459,90.0,0.0,16.094,5.6,90.126,47.365,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 15:30:00,2025-12-29 15:30:00,30.786,60.436,90.0,0.0,29.65,5.6,166.04,30.786,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 16:30:00,2025-12-29 16:30:00,10.41,66.447,90.0,0.0,56.037,5.6,313.807,10.41,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 17:30:00,2025-12-29 17:30:00,0.482,72.951,90.0,0.0,72.469,5.6,405.826,0.482,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 18:30:00,2025-12-29 18:30:00,0.0,77.279,56.587,58.0,19.279,9.2,177.367,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-29 19:30:00,2025-12-29 19:30:00,0.0,82.845,23.174,58.0,24.845,9.2,228.574,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-29 20:30:00,2025-12-29 20:30:00,0.0,96.127,20.0,5.51,90.617,9.2,833.676,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-29 21:30:00,2025-12-29 21:30:00,0.0,87.398,20.0,0.0,87.398,9.2,804.062,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 22:30:00,2025-12-29 22:30:00,0.0,73.866,20.0,0.0,73.866,2.6,192.052,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-29 23:30:00,2025-12-29 23:30:00,0.0,57.757,20.0,0.0,57.757,2.6,150.168,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 00:30:00,2025-12-30 00:30:00,0.0,46.311,29.644,-18.0,64.311,2.6,167.209,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 01:30:00,2025-12-30 01:30:00,0.0,41.155,39.287,-18.0,59.155,2.6,153.803,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 02:30:00,2025-12-30 02:30:00,0.0,43.215,48.931,-18.0,61.215,2.6,159.159,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 03:30:00,2025-12-30 03:30:00,0.0,40.88,58.575,-18.0,58.88,2.6,153.088,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 04:30:00,2025-12-30 04:30:00,0.0,50.533,68.218,-18.0,68.533,2.6,178.186,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 05:30:00,2025-12-30 05:30:00,0.0,51.538,77.862,-18.0,69.538,2.6,180.799,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-30 06:30:00,2025-12-30 06:30:00,3.907,62.426,77.862,0.0,58.519,5.6,327.706,3.907,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 07:30:00,2025-12-30 07:30:00,23.758,73.252,77.862,0.0,49.494,5.6,277.166,23.758,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 08:30:00,2025-12-30 08:30:00,43.119,77.001,77.862,0.0,33.882,5.6,189.739,43.119,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 09:30:00,2025-12-30 09:30:00,61.297,78.697,77.862,0.0,17.4,5.6,97.44,61.297,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 10:30:00,2025-12-30 10:30:00,71.892,74.373,77.862,0.0,2.481,5.6,13.894,71.892,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 11:30:00,2025-12-30 11:30:00,83.993,66.339,87.32,-17.654,0.0,5.6,0.0,83.993,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-30 12:30:00,2025-12-30 12:30:00,81.745,55.163,90.0,-5.002,0.0,5.6,0.0,60.165,21.58,charge,Solar surplus available; charging BESS without grid import.
-2025-12-30 13:30:00,2025-12-30 13:30:00,75.87,62.033,90.0,0.0,0.0,5.6,0.0,62.033,13.837,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 14:30:00,2025-12-30 14:30:00,58.587,62.783,90.0,0.0,4.196,5.6,23.498,58.587,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 15:30:00,2025-12-30 15:30:00,34.22,66.914,90.0,0.0,32.694,5.6,183.086,34.22,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 16:30:00,2025-12-30 16:30:00,11.394,62.088,90.0,0.0,50.694,5.6,283.886,11.394,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 17:30:00,2025-12-30 17:30:00,0.514,66.883,90.0,0.0,66.369,5.6,371.666,0.514,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 18:30:00,2025-12-30 18:30:00,0.0,83.188,56.587,58.0,25.188,9.2,231.73,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-30 19:30:00,2025-12-30 19:30:00,0.0,90.185,23.174,58.0,32.185,9.2,296.102,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-30 20:30:00,2025-12-30 20:30:00,0.0,91.171,20.0,5.51,85.661,9.2,788.081,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-30 21:30:00,2025-12-30 21:30:00,0.0,84.817,20.0,0.0,84.817,9.2,780.316,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 22:30:00,2025-12-30 22:30:00,0.0,66.404,20.0,0.0,66.404,2.6,172.65,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-30 23:30:00,2025-12-30 23:30:00,0.0,58.335,20.0,0.0,58.335,2.6,151.671,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 00:30:00,2025-12-31 00:30:00,0.0,41.878,29.644,-18.0,59.878,2.6,155.683,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 01:30:00,2025-12-31 01:30:00,0.0,45.306,39.287,-18.0,63.306,2.6,164.596,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 02:30:00,2025-12-31 02:30:00,0.0,43.151,48.931,-18.0,61.151,2.6,158.993,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 03:30:00,2025-12-31 03:30:00,0.0,44.669,58.575,-18.0,62.669,2.6,162.939,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 04:30:00,2025-12-31 04:30:00,0.0,44.888,68.218,-18.0,62.888,2.6,163.509,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 05:30:00,2025-12-31 05:30:00,0.0,50.811,77.862,-18.0,68.811,2.6,178.909,0.0,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
-2025-12-31 06:30:00,2025-12-31 06:30:00,3.154,57.533,77.862,0.0,54.379,5.6,304.522,3.154,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 07:30:00,2025-12-31 07:30:00,18.289,75.461,77.862,0.0,57.172,5.6,320.163,18.289,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 08:30:00,2025-12-31 08:30:00,38.719,77.69,77.862,0.0,38.971,5.6,218.238,38.719,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 09:30:00,2025-12-31 09:30:00,60.904,88.081,77.862,0.0,27.177,5.6,152.191,60.904,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 10:30:00,2025-12-31 10:30:00,68.561,63.021,80.83,-5.54,0.0,5.6,0.0,68.561,0.0,charge,Solar surplus available; charging BESS without grid import.
-2025-12-31 11:30:00,2025-12-31 11:30:00,62.453,66.542,80.83,0.0,4.089,5.6,22.898,62.453,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 12:30:00,2025-12-31 12:30:00,41.228,62.045,80.83,0.0,20.817,5.6,116.575,41.228,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 13:30:00,2025-12-31 13:30:00,40.283,63.121,80.83,0.0,22.838,5.6,127.893,40.283,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 14:30:00,2025-12-31 14:30:00,32.159,63.471,80.83,0.0,31.312,5.6,175.347,32.159,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 15:30:00,2025-12-31 15:30:00,19.602,64.272,80.83,0.0,44.67,5.6,250.152,19.602,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 16:30:00,2025-12-31 16:30:00,8.02,69.367,80.83,0.0,61.347,5.6,343.543,8.02,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 17:30:00,2025-12-31 17:30:00,0.429,71.909,80.83,0.0,71.48,5.6,400.288,0.429,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 18:30:00,2025-12-31 18:30:00,0.0,81.442,47.417,58.0,23.442,9.2,215.666,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-31 19:30:00,2025-12-31 19:30:00,0.0,88.451,20.0,47.592,40.859,9.2,375.901,0.0,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
-2025-12-31 20:30:00,2025-12-31 20:30:00,0.0,88.088,20.0,0.0,88.088,9.2,810.41,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 21:30:00,2025-12-31 21:30:00,0.0,87.344,20.0,0.0,87.344,9.2,803.565,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 22:30:00,2025-12-31 22:30:00,0.0,73.122,20.0,0.0,73.122,2.6,190.117,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2025-12-31 23:30:00,2025-12-31 23:30:00,0.0,61.483,20.0,0.0,61.483,2.6,159.856,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2026-01-01 00:30:00,2026-01-01 00:30:00,0.0,48.845,20.0,0.0,48.845,2.6,126.997,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2026-01-01 01:30:00,2026-01-01 01:30:00,0.0,39.278,20.0,0.0,39.278,2.6,102.123,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2026-01-01 02:30:00,2026-01-01 02:30:00,0.0,41.636,20.0,0.0,41.636,2.6,108.254,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2026-01-01 03:30:00,2026-01-01 03:30:00,0.0,46.794,20.0,0.0,46.794,2.6,121.664,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
-2026-01-01 04:30:00,2026-01-01 04:30:00,0.0,46.417,20.0,0.0,46.417,2.6,120.684,0.0,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+timestamp,time,solar_kw,wind_kw,load_kw,battery_soc_pct,battery_power_kw,grid_kw,tariff_inr_kwh,cost_inr,renewable_used_kw,curtailed_kw,action,reason
+2025-12-25 05:30:00,2025-12-25 05:30:00,0.0,0.208,56.358,29.644,-18.0,74.15,2.6,192.79,0.208,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-25 06:30:00,2025-12-25 06:30:00,4.45,0.179,59.087,29.644,0.0,54.458,5.6,304.965,4.629,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 07:30:00,2025-12-25 07:30:00,25.264,1.179,67.792,29.644,0.0,41.349,5.6,231.554,26.443,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 08:30:00,2025-12-25 08:30:00,45.306,0.749,83.597,29.644,0.0,37.542,5.6,210.235,46.055,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 09:30:00,2025-12-25 09:30:00,56.513,0.823,75.83,29.644,0.0,18.494,5.6,103.566,57.336,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 10:30:00,2025-12-25 10:30:00,63.864,0.659,66.662,29.644,0.0,2.139,5.6,11.978,64.523,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 11:30:00,2025-12-25 11:30:00,81.267,0.703,64.179,39.175,-17.791,0.0,5.6,0.0,81.97,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-25 12:30:00,2025-12-25 12:30:00,71.629,1.041,59.992,45.968,-12.678,0.0,5.6,0.0,72.67,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-25 13:30:00,2025-12-25 13:30:00,63.655,1.606,60.712,45.968,0.0,0.0,5.6,0.0,60.712,4.549,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 14:30:00,2025-12-25 14:30:00,41.713,2.126,71.247,45.968,0.0,27.408,5.6,153.485,43.839,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 15:30:00,2025-12-25 15:30:00,25.178,2.424,59.108,45.968,0.0,31.506,5.6,176.434,27.602,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 16:30:00,2025-12-25 16:30:00,9.324,1.071,58.976,45.968,0.0,48.581,5.6,272.054,10.395,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 17:30:00,2025-12-25 17:30:00,0.368,0.287,74.601,45.968,0.0,73.946,5.6,414.098,0.655,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 18:30:00,2025-12-25 18:30:00,0.0,0.347,78.636,20.0,45.076,33.213,9.2,305.558,0.347,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-25 19:30:00,2025-12-25 19:30:00,0.0,0.293,91.032,20.0,0.0,90.739,9.2,834.799,0.293,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 20:30:00,2025-12-25 20:30:00,0.0,0.166,95.297,20.0,0.0,95.131,9.2,875.205,0.166,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 21:30:00,2025-12-25 21:30:00,0.0,0.109,79.323,20.0,0.0,79.214,9.2,728.769,0.109,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 22:30:00,2025-12-25 22:30:00,0.0,0.103,88.917,20.0,0.0,88.814,2.6,230.916,0.103,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-25 23:30:00,2025-12-25 23:30:00,0.0,0.106,55.578,20.0,0.0,55.472,2.6,144.227,0.106,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 00:30:00,2025-12-26 00:30:00,0.0,0.103,49.558,29.644,-18.0,67.455,2.6,175.383,0.103,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 01:30:00,2025-12-26 01:30:00,0.0,0.106,40.654,39.287,-18.0,58.548,2.6,152.225,0.106,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 02:30:00,2025-12-26 02:30:00,0.0,0.123,49.349,48.931,-18.0,67.226,2.6,174.788,0.123,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 03:30:00,2025-12-26 03:30:00,0.0,0.153,50.658,58.575,-18.0,68.505,2.6,178.113,0.153,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 04:30:00,2025-12-26 04:30:00,0.0,0.189,44.768,68.218,-18.0,62.579,2.6,162.705,0.189,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 05:30:00,2025-12-26 05:30:00,0.0,0.219,51.036,77.862,-18.0,68.817,2.6,178.924,0.219,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-26 06:30:00,2025-12-26 06:30:00,4.992,0.293,59.906,77.862,0.0,54.621,5.6,305.878,5.285,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 07:30:00,2025-12-26 07:30:00,24.139,1.707,76.289,77.862,0.0,50.443,5.6,282.481,25.846,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 08:30:00,2025-12-26 08:30:00,45.622,2.322,78.464,77.862,0.0,30.52,5.6,170.912,47.944,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 09:30:00,2025-12-26 09:30:00,59.453,2.272,77.684,77.862,0.0,15.959,5.6,89.37,61.725,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 10:30:00,2025-12-26 10:30:00,72.186,2.198,68.067,81.246,-6.317,0.0,5.6,0.0,74.384,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-26 11:30:00,2025-12-26 11:30:00,69.348,2.398,64.563,85.095,-7.183,0.0,5.6,0.0,71.746,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-26 12:30:00,2025-12-26 12:30:00,67.256,2.502,63.075,88.675,-6.683,0.0,5.6,0.0,69.758,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-26 13:30:00,2025-12-26 13:30:00,62.686,2.45,59.56,90.0,-2.473,0.0,5.6,0.0,62.033,3.103,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-26 14:30:00,2025-12-26 14:30:00,47.973,2.502,68.443,90.0,0.0,17.968,5.6,100.621,50.475,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 15:30:00,2025-12-26 15:30:00,27.411,2.15,61.853,90.0,0.0,32.292,5.6,180.835,29.561,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 16:30:00,2025-12-26 16:30:00,11.049,0.439,67.615,90.0,0.0,56.127,5.6,314.311,11.488,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 17:30:00,2025-12-26 17:30:00,0.476,0.123,65.18,90.0,0.0,64.581,5.6,361.654,0.599,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 18:30:00,2025-12-26 18:30:00,0.0,0.153,81.605,56.587,58.0,23.452,9.2,215.758,0.153,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-26 19:30:00,2025-12-26 19:30:00,0.0,0.153,92.766,23.174,58.0,34.613,9.2,318.44,0.153,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-26 20:30:00,2025-12-26 20:30:00,0.0,0.141,92.884,20.0,5.51,87.233,9.2,802.544,0.141,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-26 21:30:00,2025-12-26 21:30:00,0.0,0.123,87.914,20.0,0.0,87.791,9.2,807.677,0.123,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 22:30:00,2025-12-26 22:30:00,0.0,0.094,67.196,20.0,0.0,67.102,2.6,174.465,0.094,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-26 23:30:00,2025-12-26 23:30:00,0.0,0.05,57.662,20.0,0.0,57.612,2.6,149.791,0.05,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 00:30:00,2025-12-27 00:30:00,0.0,0.027,30.935,29.644,-18.0,48.908,2.6,127.161,0.027,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 01:30:00,2025-12-27 01:30:00,0.0,0.02,37.23,39.287,-18.0,55.21,2.6,143.546,0.02,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 02:30:00,2025-12-27 02:30:00,0.0,0.026,34.381,48.931,-18.0,52.355,2.6,136.123,0.026,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 03:30:00,2025-12-27 03:30:00,0.0,0.044,37.597,58.575,-18.0,55.553,2.6,144.438,0.044,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 04:30:00,2025-12-27 04:30:00,0.0,0.072,44.421,68.218,-18.0,62.349,2.6,162.107,0.072,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 05:30:00,2025-12-27 05:30:00,0.0,0.094,50.312,77.862,-18.0,68.218,2.6,177.367,0.094,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-27 06:30:00,2025-12-27 06:30:00,4.874,0.082,48.311,77.862,0.0,43.355,5.6,242.788,4.956,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 07:30:00,2025-12-27 07:30:00,28.032,0.823,66.511,77.862,0.0,37.656,5.6,210.874,28.855,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 08:30:00,2025-12-27 08:30:00,49.754,0.556,73.393,77.862,0.0,23.083,5.6,129.265,50.31,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 09:30:00,2025-12-27 09:30:00,68.632,0.627,67.857,77.862,0.0,0.0,5.6,0.0,67.857,1.402,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 10:30:00,2025-12-27 10:30:00,82.806,0.738,65.094,87.747,-18.45,0.0,5.6,0.0,83.544,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-27 11:30:00,2025-12-27 11:30:00,87.806,0.861,53.909,90.0,-4.206,0.0,5.6,0.0,58.115,30.552,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-27 12:30:00,2025-12-27 12:30:00,85.125,1.101,52.053,90.0,0.0,0.0,5.6,0.0,52.053,34.173,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 13:30:00,2025-12-27 13:30:00,72.625,1.548,52.467,90.0,0.0,0.0,5.6,0.0,52.467,21.706,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 14:30:00,2025-12-27 14:30:00,52.385,2.033,57.27,90.0,0.0,2.852,5.6,15.971,54.418,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 15:30:00,2025-12-27 15:30:00,32.414,1.92,54.718,90.0,0.0,20.384,5.6,114.15,34.334,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 16:30:00,2025-12-27 16:30:00,12.754,0.509,53.823,90.0,0.0,40.56,5.6,227.136,13.263,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 17:30:00,2025-12-27 17:30:00,0.545,0.179,58.601,90.0,0.0,57.877,5.6,324.111,0.724,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 18:30:00,2025-12-27 18:30:00,0.0,0.263,69.477,56.587,58.0,11.214,9.2,103.169,0.263,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-27 19:30:00,2025-12-27 19:30:00,0.0,0.3,75.364,23.174,58.0,17.064,9.2,156.989,0.3,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-27 20:30:00,2025-12-27 20:30:00,0.0,0.3,83.501,20.0,5.51,77.691,9.2,714.757,0.3,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-27 21:30:00,2025-12-27 21:30:00,0.0,0.269,78.663,20.0,0.0,78.394,9.2,721.225,0.269,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 22:30:00,2025-12-27 22:30:00,0.0,0.235,65.305,20.0,0.0,65.07,2.6,169.182,0.235,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-27 23:30:00,2025-12-27 23:30:00,0.0,0.189,60.339,20.0,0.0,60.15,2.6,156.39,0.189,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 00:30:00,2025-12-28 00:30:00,0.0,0.162,38.777,29.644,-18.0,56.615,2.6,147.199,0.162,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 01:30:00,2025-12-28 01:30:00,0.0,0.153,43.871,39.287,-18.0,61.718,2.6,160.467,0.153,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 02:30:00,2025-12-28 02:30:00,0.0,0.149,39.07,48.931,-18.0,56.921,2.6,147.995,0.149,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 03:30:00,2025-12-28 03:30:00,0.0,0.141,38.104,58.575,-18.0,55.963,2.6,145.504,0.141,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 04:30:00,2025-12-28 04:30:00,0.0,0.13,41.207,68.218,-18.0,59.077,2.6,153.6,0.13,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 05:30:00,2025-12-28 05:30:00,0.0,0.116,45.949,77.862,-18.0,63.833,2.6,165.966,0.116,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-28 06:30:00,2025-12-28 06:30:00,4.779,0.056,53.107,77.862,0.0,48.272,5.6,270.323,4.835,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 07:30:00,2025-12-28 07:30:00,27.793,0.313,58.514,77.862,0.0,30.408,5.6,170.285,28.106,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 08:30:00,2025-12-28 08:30:00,49.574,0.166,65.068,77.862,0.0,15.328,5.6,85.837,49.74,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 09:30:00,2025-12-28 09:30:00,70.464,0.391,70.687,77.862,0.0,0.0,5.6,0.0,70.687,0.168,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 10:30:00,2025-12-28 10:30:00,83.316,0.575,63.261,88.915,-20.63,0.0,5.6,0.0,83.891,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-28 11:30:00,2025-12-28 11:30:00,88.511,0.835,61.587,90.0,-2.026,0.0,5.6,0.0,63.613,25.733,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-28 12:30:00,2025-12-28 12:30:00,86.137,1.195,52.477,90.0,0.0,0.0,5.6,0.0,52.477,34.855,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 13:30:00,2025-12-28 13:30:00,74.769,1.646,52.55,90.0,0.0,0.0,5.6,0.0,52.55,23.865,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 14:30:00,2025-12-28 14:30:00,57.205,1.876,50.749,90.0,0.0,0.0,5.6,0.0,50.749,8.332,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 15:30:00,2025-12-28 15:30:00,35.084,1.626,58.754,90.0,0.0,22.044,5.6,123.446,36.71,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 16:30:00,2025-12-28 16:30:00,12.84,0.399,53.206,90.0,0.0,39.967,5.6,223.815,13.239,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 17:30:00,2025-12-28 17:30:00,0.537,0.158,60.866,90.0,0.0,60.171,5.6,336.958,0.695,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 18:30:00,2025-12-28 18:30:00,0.0,0.219,70.521,56.587,58.0,12.302,9.2,113.178,0.219,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-28 19:30:00,2025-12-28 19:30:00,0.0,0.229,72.63,23.174,58.0,14.401,9.2,132.489,0.229,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-28 20:30:00,2025-12-28 20:30:00,0.0,0.208,83.409,20.0,5.51,77.691,9.2,714.757,0.208,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-28 21:30:00,2025-12-28 21:30:00,0.0,0.189,77.566,20.0,0.0,77.377,9.2,711.868,0.189,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 22:30:00,2025-12-28 22:30:00,0.0,0.179,62.437,20.0,0.0,62.258,2.6,161.871,0.179,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-28 23:30:00,2025-12-28 23:30:00,0.0,0.171,49.388,20.0,0.0,49.217,2.6,127.964,0.171,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 00:30:00,2025-12-29 00:30:00,0.0,0.171,41.752,29.644,-18.0,59.581,2.6,154.911,0.171,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 01:30:00,2025-12-29 01:30:00,0.0,0.175,47.457,39.287,-18.0,65.282,2.6,169.733,0.175,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 02:30:00,2025-12-29 02:30:00,0.0,0.194,43.364,48.931,-18.0,61.17,2.6,159.042,0.194,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 03:30:00,2025-12-29 03:30:00,0.0,0.263,43.848,58.575,-18.0,61.585,2.6,160.121,0.263,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 04:30:00,2025-12-29 04:30:00,0.0,0.369,43.511,68.218,-18.0,61.142,2.6,158.969,0.369,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 05:30:00,2025-12-29 05:30:00,0.0,0.306,41.481,77.862,-18.0,59.175,2.6,153.855,0.306,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-29 06:30:00,2025-12-29 06:30:00,3.311,0.208,64.689,77.862,0.0,61.17,5.6,342.552,3.519,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 07:30:00,2025-12-29 07:30:00,18.357,0.456,71.288,77.862,0.0,52.475,5.6,293.86,18.813,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 08:30:00,2025-12-29 08:30:00,41.741,1.056,74.772,77.862,0.0,31.975,5.6,179.06,42.797,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 09:30:00,2025-12-29 09:30:00,70.114,1.347,83.205,77.862,0.0,11.744,5.6,65.766,71.461,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 10:30:00,2025-12-29 10:30:00,82.99,1.686,70.108,85.667,-14.568,0.0,5.6,0.0,84.676,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-29 11:30:00,2025-12-29 11:30:00,78.166,1.811,62.189,90.0,-8.088,0.0,5.6,0.0,70.277,9.7,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-29 12:30:00,2025-12-29 12:30:00,72.896,1.833,64.759,90.0,0.0,0.0,5.6,0.0,64.759,9.97,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 13:30:00,2025-12-29 13:30:00,63.874,2.322,62.937,90.0,0.0,0.0,5.6,0.0,62.937,3.259,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 14:30:00,2025-12-29 14:30:00,47.365,3.009,63.459,90.0,0.0,13.085,5.6,73.276,50.374,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 15:30:00,2025-12-29 15:30:00,30.786,3.009,60.436,90.0,0.0,26.641,5.6,149.19,33.795,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 16:30:00,2025-12-29 16:30:00,10.41,1.244,66.447,90.0,0.0,54.793,5.6,306.841,11.654,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 17:30:00,2025-12-29 17:30:00,0.482,0.369,72.951,90.0,0.0,72.1,5.6,403.76,0.851,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 18:30:00,2025-12-29 18:30:00,0.0,0.773,77.279,56.587,58.0,18.506,9.2,170.255,0.773,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-29 19:30:00,2025-12-29 19:30:00,0.0,0.714,82.845,23.174,58.0,24.131,9.2,222.005,0.714,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-29 20:30:00,2025-12-29 20:30:00,0.0,0.275,96.127,20.0,5.51,90.342,9.2,831.146,0.275,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-29 21:30:00,2025-12-29 21:30:00,0.0,0.145,87.398,20.0,0.0,87.253,9.2,802.728,0.145,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 22:30:00,2025-12-29 22:30:00,0.0,0.109,73.866,20.0,0.0,73.757,2.6,191.768,0.109,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-29 23:30:00,2025-12-29 23:30:00,0.0,0.08,57.757,20.0,0.0,57.677,2.6,149.96,0.08,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 00:30:00,2025-12-30 00:30:00,0.0,0.065,46.311,29.644,-18.0,64.246,2.6,167.04,0.065,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 01:30:00,2025-12-30 01:30:00,0.0,0.072,41.155,39.287,-18.0,59.083,2.6,153.616,0.072,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 02:30:00,2025-12-30 02:30:00,0.0,0.097,43.215,48.931,-18.0,61.118,2.6,158.907,0.097,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 03:30:00,2025-12-30 03:30:00,0.0,0.119,40.88,58.575,-18.0,58.761,2.6,152.779,0.119,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 04:30:00,2025-12-30 04:30:00,0.0,0.126,50.533,68.218,-18.0,68.407,2.6,177.858,0.126,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 05:30:00,2025-12-30 05:30:00,0.0,0.119,51.538,77.862,-18.0,69.419,2.6,180.489,0.119,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-30 06:30:00,2025-12-30 06:30:00,3.907,0.246,62.426,77.862,0.0,58.273,5.6,326.329,4.153,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 07:30:00,2025-12-30 07:30:00,23.758,1.163,73.252,77.862,0.0,48.331,5.6,270.654,24.921,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 08:30:00,2025-12-30 08:30:00,43.119,0.848,77.001,77.862,0.0,33.034,5.6,184.99,43.967,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 09:30:00,2025-12-30 09:30:00,61.297,0.773,78.697,77.862,0.0,16.627,5.6,93.111,62.07,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 10:30:00,2025-12-30 10:30:00,71.892,0.326,74.373,77.862,0.0,2.155,5.6,12.068,72.218,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 11:30:00,2025-12-30 11:30:00,83.993,0.05,66.339,87.347,-17.704,0.0,5.6,0.0,84.043,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-30 12:30:00,2025-12-30 12:30:00,81.745,0.003,55.163,90.0,-4.952,0.0,5.6,0.0,60.115,21.633,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-30 13:30:00,2025-12-30 13:30:00,75.87,0.003,62.033,90.0,0.0,0.0,5.6,0.0,62.033,13.84,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 14:30:00,2025-12-30 14:30:00,58.587,0.042,62.783,90.0,0.0,4.154,5.6,23.262,58.629,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 15:30:00,2025-12-30 15:30:00,34.22,0.213,66.914,90.0,0.0,32.481,5.6,181.894,34.433,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 16:30:00,2025-12-30 16:30:00,11.394,0.219,62.088,90.0,0.0,50.475,5.6,282.66,11.613,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 17:30:00,2025-12-30 17:30:00,0.514,0.13,66.883,90.0,0.0,66.239,5.6,370.938,0.644,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 18:30:00,2025-12-30 18:30:00,0.0,0.391,83.188,56.587,58.0,24.797,9.2,228.132,0.391,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-30 19:30:00,2025-12-30 19:30:00,0.0,0.546,90.185,23.174,58.0,31.639,9.2,291.079,0.546,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-30 20:30:00,2025-12-30 20:30:00,0.0,0.415,91.171,20.0,5.51,85.246,9.2,784.263,0.415,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-30 21:30:00,2025-12-30 21:30:00,0.0,0.149,84.817,20.0,0.0,84.668,9.2,778.946,0.149,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 22:30:00,2025-12-30 22:30:00,0.0,0.067,66.404,20.0,0.0,66.337,2.6,172.476,0.067,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-30 23:30:00,2025-12-30 23:30:00,0.0,0.029,58.335,20.0,0.0,58.306,2.6,151.596,0.029,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 00:30:00,2025-12-31 00:30:00,0.0,0.017,41.878,29.644,-18.0,59.861,2.6,155.639,0.017,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 01:30:00,2025-12-31 01:30:00,0.0,0.015,45.306,39.287,-18.0,63.291,2.6,164.557,0.015,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 02:30:00,2025-12-31 02:30:00,0.0,0.018,43.151,48.931,-18.0,61.133,2.6,158.946,0.018,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 03:30:00,2025-12-31 03:30:00,0.0,0.021,44.669,58.575,-18.0,62.648,2.6,162.885,0.021,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 04:30:00,2025-12-31 04:30:00,0.0,0.024,44.888,68.218,-18.0,62.864,2.6,163.446,0.024,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 05:30:00,2025-12-31 05:30:00,0.0,0.03,50.811,77.862,-18.0,68.781,2.6,178.831,0.03,0.0,charge,Off-peak tariff; pre-charging BESS for peak-period cost reduction.
+2025-12-31 06:30:00,2025-12-31 06:30:00,3.154,0.116,57.533,77.862,0.0,54.263,5.6,303.873,3.27,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 07:30:00,2025-12-31 07:30:00,18.289,0.749,75.461,77.862,0.0,56.423,5.6,315.969,19.038,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 08:30:00,2025-12-31 08:30:00,38.719,0.566,77.69,77.862,0.0,38.405,5.6,215.068,39.285,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 09:30:00,2025-12-31 09:30:00,60.904,0.384,88.081,77.862,0.0,26.793,5.6,150.041,61.288,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 10:30:00,2025-12-31 10:30:00,68.561,0.3,63.021,80.991,-5.84,0.0,5.6,0.0,68.861,0.0,charge,Renewable surplus available; charging BESS without grid import.
+2025-12-31 11:30:00,2025-12-31 11:30:00,62.453,0.269,66.542,80.991,0.0,3.82,5.6,21.392,62.722,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 12:30:00,2025-12-31 12:30:00,41.228,0.287,62.045,80.991,0.0,20.53,5.6,114.968,41.515,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 13:30:00,2025-12-31 13:30:00,40.283,0.415,63.121,80.991,0.0,22.423,5.6,125.569,40.698,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 14:30:00,2025-12-31 14:30:00,32.159,0.726,63.471,80.991,0.0,30.586,5.6,171.282,32.885,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 15:30:00,2025-12-31 15:30:00,19.602,1.278,64.272,80.991,0.0,43.392,5.6,242.995,20.88,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 16:30:00,2025-12-31 16:30:00,8.02,1.436,69.367,80.991,0.0,59.911,5.6,335.502,9.456,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 17:30:00,2025-12-31 17:30:00,0.429,0.546,71.909,80.991,0.0,70.934,5.6,397.23,0.975,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 18:30:00,2025-12-31 18:30:00,0.0,0.648,81.442,47.578,58.0,22.794,9.2,209.705,0.648,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-31 19:30:00,2025-12-31 19:30:00,0.0,0.399,88.451,20.0,47.871,40.181,9.2,369.663,0.399,0.0,discharge,Peak tariff or high demand; discharging BESS to reduce grid purchase.
+2025-12-31 20:30:00,2025-12-31 20:30:00,0.0,0.126,88.088,20.0,0.0,87.962,9.2,809.25,0.126,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 21:30:00,2025-12-31 21:30:00,0.0,0.058,87.344,20.0,0.0,87.286,9.2,803.031,0.058,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 22:30:00,2025-12-31 22:30:00,0.0,0.027,73.122,20.0,0.0,73.095,2.6,190.047,0.027,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2025-12-31 23:30:00,2025-12-31 23:30:00,0.0,0.014,61.483,20.0,0.0,61.469,2.6,159.819,0.014,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2026-01-01 00:30:00,2026-01-01 00:30:00,0.0,0.011,48.845,20.0,0.0,48.834,2.6,126.968,0.011,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2026-01-01 01:30:00,2026-01-01 01:30:00,0.0,0.008,39.278,20.0,0.0,39.27,2.6,102.102,0.008,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2026-01-01 02:30:00,2026-01-01 02:30:00,0.0,0.009,41.636,20.0,0.0,41.627,2.6,108.23,0.009,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2026-01-01 03:30:00,2026-01-01 03:30:00,0.0,0.012,46.794,20.0,0.0,46.782,2.6,121.633,0.012,0.0,idle,Hold battery inside safe band; no economic dispatch needed.
+2026-01-01 04:30:00,2026-01-01 04:30:00,0.0,0.024,46.417,20.0,0.0,46.393,2.6,120.622,0.024,0.0,idle,Hold battery inside safe band; no economic dispatch needed.

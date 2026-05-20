@@ -59,6 +59,7 @@ def generate_operational_dataset(cleaned: pd.DataFrame | None = None) -> pd.Data
     df = df.sort_values("timestamp").reset_index(drop=True)
 
     df["solar_kw"] = _generate_solar_power(df)
+    df["wind_kw"] = _generate_wind_power(df)
     df["load_kw"] = _generate_load(df, rng)
     df["tariff_inr_kwh"] = _generate_india_tou_tariff(df)
     battery_df = _simulate_safe_battery(df)
@@ -81,6 +82,7 @@ def generate_operational_dataset(cleaned: pd.DataFrame | None = None) -> pd.Data
         "humidity_pct",
         "precipitation_mm",
         "solar_kw",
+        "wind_kw",
         "load_kw",
         "tariff_inr_kwh",
         "battery_soc_pct",
@@ -104,6 +106,16 @@ def _generate_solar_power(df: pd.DataFrame) -> pd.Series:
     humidity_derate = 1.0 - np.maximum(df["humidity_pct"] - 85.0, 0.0) * 0.001
     solar_kw = solar_kw * temp_derate.clip(0.84, 1.0) * humidity_derate.clip(0.94, 1.0)
     return solar_kw.clip(0, MICROGRID.pv_capacity_kw).round(3)
+
+
+def _generate_wind_power(df: pd.DataFrame) -> pd.Series:
+    ws = df["wind_speed_mps"].to_numpy()
+    wind_kw = np.zeros_like(ws)
+    mask_active = (ws >= 1.5) & (ws < 8.0)
+    wind_kw[mask_active] = MICROGRID.wind_capacity_kw * ((ws[mask_active] - 1.5) / (8.0 - 1.5)) ** 3
+    mask_rated = (ws >= 8.0) & (ws <= 20.0)
+    wind_kw[mask_rated] = MICROGRID.wind_capacity_kw
+    return pd.Series(wind_kw, index=df.index).round(3)
 
 
 def _generate_load(df: pd.DataFrame, rng: np.random.Generator) -> pd.Series:
@@ -165,7 +177,7 @@ def _simulate_safe_battery(df: pd.DataFrame) -> pd.DataFrame:
     energy = BATTERY.capacity_kwh * soc_pct / 100.0
 
     for row in df.itertuples(index=False):
-        surplus = float(row.solar_kw - row.load_kw)
+        surplus = float(row.solar_kw + row.wind_kw - row.load_kw)
         tariff = float(row.tariff_inr_kwh)
         power = 0.0
         violation = 0
@@ -263,7 +275,8 @@ def _plot_synthetic_outputs(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(13, 5))
     plot_df["load_kw"].plot(ax=ax, color="#1f7a4d", label="Load demand")
     plot_df["solar_kw"].plot(ax=ax, color="#f59f00", label="Solar generation")
-    ax.set_title("Synthetic Load Demand and Solar Generation - First 14 Days")
+    plot_df["wind_kw"].plot(ax=ax, color="#0f766e", label="Wind generation")
+    ax.set_title("Synthetic Load, Solar, and Wind Generation - First 14 Days")
     ax.set_ylabel("Power (kW)")
     ax.set_xlabel("Timestamp")
     ax.legend()

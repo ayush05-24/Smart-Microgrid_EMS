@@ -15,6 +15,7 @@ def test_cleaning_and_synthetic_constraints() -> None:
     assert cleaned["timestamp"].is_monotonic_increasing
     assert cleaned[["ghi", "dni", "diffuse_irradiance", "temperature_c", "wind_speed_mps"]].isna().sum().sum() == 0
     assert ems["load_kw"].between(MICROGRID.load_min_kw, MICROGRID.load_max_kw).all()
+    assert ems["wind_kw"].between(0, MICROGRID.wind_capacity_kw).all()
     assert ems["battery_soc_pct"].between(BATTERY.min_soc_pct, BATTERY.max_soc_pct).all()
     assert set(ems["tariff_inr_kwh"].unique()).issubset({2.6, 5.6, 9.2})
 
@@ -43,5 +44,6 @@ def test_live_simulator_generates_safe_operator_data() -> None:
     latest = snapshot["latest"]
     assert MICROGRID.load_min_kw <= latest["load_kw"] <= MICROGRID.load_max_kw
     assert 0 <= latest["solar_kw"] <= MICROGRID.pv_capacity_kw
+    assert 0 <= latest["wind_kw"] <= MICROGRID.wind_capacity_kw
     assert BATTERY.min_soc_pct <= latest["battery_soc_pct"] <= BATTERY.max_soc_pct
     assert latest["tariff_inr_kwh"] in {2.6, 5.6, 9.2}

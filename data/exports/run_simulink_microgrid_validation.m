@@ -5,12 +5,14 @@ data = load('microgrid_predictions_dispatch.mat');
 
 time = data.time_hours(:);
 solar_ts = timeseries(data.solar_kw(:), time, 'Name', 'PV_kW');
+wind_ts = timeseries(data.wind_kw(:), time, 'Name', 'Wind_kW');
 load_ts = timeseries(data.load_kw(:), time, 'Name', 'Load_kW');
 soc_ts = timeseries(data.battery_soc_pct(:), time, 'Name', 'Battery_SoC_pct');
 battery_power_ts = timeseries(data.battery_power_kw(:), time, 'Name', 'BESS_Power_kW');
 grid_ts = timeseries(data.grid_kw(:), time, 'Name', 'EMS_Grid_kW');
 
 assignin('base', 'solar_ts', solar_ts);
+assignin('base', 'wind_ts', wind_ts);
 assignin('base', 'load_ts', load_ts);
 assignin('base', 'soc_ts', soc_ts);
 assignin('base', 'battery_power_ts', battery_power_ts);

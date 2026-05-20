@@ -50,12 +50,12 @@
     }
   },
   "outputs": {
-    "cleaned_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\processed\\cleaned_nasa_power.csv",
-    "normalized_csv": "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\processed\\cleaned_nasa_power_normalized.csv",
+    "cleaned_csv": "C:\\Users\\ayush\\Desktop\\Project\\Projects\\Final Year Project\\data\\processed\\cleaned_nasa_power.csv",
+    "normalized_csv": "C:\\Users\\ayush\\Desktop\\Project\\Projects\\Final Year Project\\data\\processed\\cleaned_nasa_power_normalized.csv",
     "plots": [
-      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\solar_trends.png",
-      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\temperature_trends.png",
-      "C:\\Users\\ayush\\Desktop\\Final Year Project\\data\\outputs\\plots\\wind_trends.png"
+      "C:\\Users\\ayush\\Desktop\\Project\\Projects\\Final Year Project\\data\\outputs\\plots\\solar_trends.png",
+      "C:\\Users\\ayush\\Desktop\\Project\\Projects\\Final Year Project\\data\\outputs\\plots\\temperature_trends.png",
+      "C:\\Users\\ayush\\Desktop\\Project\\Projects\\Final Year Project\\data\\outputs\\plots\\wind_trends.png"
     ]
   }
 }

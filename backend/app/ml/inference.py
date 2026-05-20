@@ -20,9 +20,19 @@ def forecast_payload(horizon_hours: int = 24) -> dict[str, object]:
         generate_operational_dataset()
     df = pd.read_csv(EMS_DATASET, parse_dates=["timestamp"]).sort_values("timestamp")
 
-    solar = _artifact_or_operational_forecast(df, "solar_kw", horizon_hours)
-    load = _artifact_or_operational_forecast(df, "load_kw", horizon_hours)
-    merged = solar.merge(load, on="timestamp", how="outer").sort_values("timestamp")
+    target_df = df.tail(horizon_hours).copy()
+    target_timestamps = target_df["timestamp"].reset_index(drop=True)
+
+    solar = _artifact_or_operational_forecast(df, "solar_kw", horizon_hours, target_timestamps).reset_index(drop=True)
+    wind = _artifact_or_operational_forecast(df, "wind_kw", horizon_hours, target_timestamps).reset_index(drop=True)
+    load = _artifact_or_operational_forecast(df, "load_kw", horizon_hours, target_timestamps).reset_index(drop=True)
+
+    merged = pd.DataFrame({
+        "timestamp": target_timestamps,
+        "solar_kw": solar["solar_kw"],
+        "wind_kw": wind["wind_kw"],
+        "load_kw": load["load_kw"]
+    })
     return {
         "horizon_hours": horizon_hours,
         "model_status": _model_status(),
@@ -30,26 +40,32 @@ def forecast_payload(horizon_hours: int = 24) -> dict[str, object]:
     }
 
 
-def _artifact_or_operational_forecast(df: pd.DataFrame, target: str, horizon: int) -> pd.DataFrame:
+def _artifact_or_operational_forecast(df: pd.DataFrame, target: str, horizon: int, target_timestamps: pd.Series) -> pd.DataFrame:
     artifact = OUTPUT_DIR / f"{target}_forecast.csv"
     pred_col = f"{target}_prediction"
     if artifact.exists():
         artifact_df = pd.read_csv(artifact, parse_dates=["timestamp"])
         if pred_col in artifact_df.columns:
-            return artifact_df[["timestamp", pred_col]].tail(horizon).rename(columns={pred_col: target})
-    return _persistence_forecast(df, target, horizon)
+            merged = pd.DataFrame({"timestamp": target_timestamps}).merge(
+                artifact_df[["timestamp", pred_col]], on="timestamp", how="left"
+            )
+            if merged[pred_col].isna().any():
+                persist = _persistence_forecast_for_dates(df, target, target_timestamps)
+                merged[pred_col] = merged[pred_col].fillna(persist[target])
+            return merged.rename(columns={pred_col: target})
+    return _persistence_forecast_for_dates(df, target, target_timestamps)
 
 
-def _persistence_forecast(df: pd.DataFrame, target: str, horizon: int) -> pd.DataFrame:
+def _persistence_forecast_for_dates(df: pd.DataFrame, target: str, target_timestamps: pd.Series) -> pd.DataFrame:
     history = df[["timestamp", target]].copy()
     history["hour"] = history["timestamp"].dt.hour
     history["day_of_week"] = history["timestamp"].dt.dayofweek
-    last_timestamp = history["timestamp"].max()
-    future_ts = pd.date_range(last_timestamp + pd.Timedelta(hours=1), periods=horizon, freq="h")
-    recent = history.tail(24 * 28)
 
     values: list[float] = []
-    for ts in future_ts:
+    for ts in target_timestamps:
+        recent = history[history["timestamp"] < ts].tail(24 * 28)
+        if recent.empty:
+            recent = history.tail(24 * 28)
         same_pattern = recent[(recent["hour"] == ts.hour) & (recent["day_of_week"] == ts.dayofweek)]
         if same_pattern.empty:
             same_pattern = recent[recent["hour"] == ts.hour]
@@ -58,11 +74,13 @@ def _persistence_forecast(df: pd.DataFrame, target: str, horizon: int) -> pd.Dat
             value = float(recent[target].tail(24).mean())
         if target == "solar_kw":
             value = float(np.clip(value, 0, MICROGRID.pv_capacity_kw))
+        elif target == "wind_kw":
+            value = float(np.clip(value, 0, MICROGRID.wind_capacity_kw))
         else:
             value = float(np.clip(value, MICROGRID.load_min_kw, MICROGRID.load_max_kw))
         values.append(value)
 
-    return pd.DataFrame({"timestamp": future_ts, target: values})
+    return pd.DataFrame({"timestamp": target_timestamps, target: values})
 
 
 def _model_status() -> dict[str, bool | str]:

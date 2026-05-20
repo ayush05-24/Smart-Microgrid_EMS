@@ -111,6 +111,10 @@ export function getLiveStatus() {
   return request("/live/status");
 }
 
+export function getLiveSnapshot(records = 120) {
+  return request(`/live/snapshot?records=${records}`);
+}
+
 export function startLiveSimulation(intervalSeconds = 1.5, reset = false) {
   return request("/live/start", {
     method: "POST",
