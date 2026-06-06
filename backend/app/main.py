@@ -7,10 +7,10 @@ from pydantic import BaseModel, Field
 from .gpu import gpu_summary
 from .ml.inference import forecast_payload
 from .services.alerts import detect_alerts
-from .services.dispatch import build_dispatch_table, latest_operator_recommendation
+from .services.dispatch_v2 import build_dispatch_table_v2, latest_operator_recommendation_v2
 from .services.exports import export_for_matlab
 from .services.live_simulator import live_simulator
-from .services.metrics import compute_performance_metrics
+from .services.metrics_v2 import compute_performance_metrics_v2
 from .services.repository import recent_window
 from .services.scenarios import run_scenario
 from .utils import rounded_records
@@ -30,7 +30,7 @@ class OverrideRequest(BaseModel):
     mode: str = Field(default="auto", examples=["auto", "force_charge", "force_discharge", "island"])
 
 
-app = FastAPI(title="Smart Microgrid EMS API", version="1.0.0")
+app = FastAPI(title="Smart Microgrid EMS API", version="2.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -86,36 +86,48 @@ def forecast(horizon_hours: int = Query(24, ge=1, le=168)) -> dict[str, object]:
 
 
 @app.get("/optimize")
-def optimize(horizon_hours: int = Query(24, ge=1, le=168)) -> dict[str, object]:
+def optimize(
+    horizon_hours: int = Query(24, ge=1, le=168),
+    carbon_weight: float = Query(0.1, ge=0.0, le=1.0)
+) -> dict[str, object]:
     df = recent_window(horizon_hours)
-    decision_df = build_dispatch_table(df, horizon_hours=horizon_hours)
+    decision_df = build_dispatch_table_v2(df, horizon_hours=horizon_hours, carbon_weight=carbon_weight)
     return {
-        "recommendation": latest_operator_recommendation(df),
+        "recommendation": latest_operator_recommendation_v2(df, carbon_weight=carbon_weight),
         "dispatch": rounded_records(decision_df, 3),
     }
 
 
 @app.get("/decisions")
-def decisions(horizon_hours: int = Query(24, ge=1, le=168)) -> dict[str, object]:
+def decisions(
+    horizon_hours: int = Query(24, ge=1, le=168),
+    carbon_weight: float = Query(0.1, ge=0.0, le=1.0)
+) -> dict[str, object]:
     df = recent_window(horizon_hours)
-    decision_df = build_dispatch_table(df, horizon_hours=horizon_hours)
+    decision_df = build_dispatch_table_v2(df, horizon_hours=horizon_hours, carbon_weight=carbon_weight)
     return {
         "decision_table": rounded_records(decision_df, 3),
-        "columns": ["time", "solar_kw", "load_kw", "battery_soc_pct", "grid_kw", "action", "reason"],
+        "columns": ["time", "solar_kw", "load_kw", "battery_soc_pct", "battery_soh_pct", "grid_kw", "action", "reason"],
     }
 
 
 @app.get("/metrics")
-def metrics(horizon_hours: int = Query(168, ge=1, le=720)) -> dict[str, object]:
+def metrics(
+    horizon_hours: int = Query(168, ge=1, le=720),
+    carbon_weight: float = Query(0.1, ge=0.0, le=1.0)
+) -> dict[str, object]:
     df = recent_window(horizon_hours)
-    return compute_performance_metrics(df, horizon_hours=horizon_hours, prefix="api")
+    return compute_performance_metrics_v2(df, horizon_hours=horizon_hours, prefix="api", carbon_weight=carbon_weight)
 
 
 @app.get("/alerts")
-def alerts(horizon_hours: int = Query(48, ge=1, le=168)) -> dict[str, object]:
+def alerts(
+    horizon_hours: int = Query(48, ge=1, le=168),
+    carbon_weight: float = Query(0.1, ge=0.0, le=1.0)
+) -> dict[str, object]:
     df = recent_window(horizon_hours)
-    dispatch_df = build_dispatch_table(df, horizon_hours=horizon_hours)
-    return {"alerts": detect_alerts(df, dispatch_df)}
+    decision_df = build_dispatch_table_v2(df, horizon_hours=horizon_hours, carbon_weight=carbon_weight)
+    return {"alerts": detect_alerts(df, decision_df)}
 
 
 @app.post("/simulate")

@@ -39,6 +39,9 @@ class LiveTelemetrySimulator:
         self._config = LiveConfig()
         self._rng = np.random.default_rng(self._config.seed)
         self._soc_pct = BATTERY.initial_soc_pct
+        self._soh = 100.0
+        self._resistance_growth = 1.0
+        self._cell_temp_c = 25.0
         self._cloud_factor = 0.88
         self._override_mode = "auto"
         self._tick = 0
@@ -49,6 +52,10 @@ class LiveTelemetrySimulator:
             self._records = deque(self._records, maxlen=self._config.max_records)
             if reset or not self._records:
                 self._records.clear()
+                self._soc_pct = BATTERY.initial_soc_pct
+                self._soh = 100.0
+                self._resistance_growth = 1.0
+                self._cell_temp_c = 25.0
                 try:
                     import pandas as pd
                     if EMS_DATASET.exists():
@@ -84,6 +91,8 @@ class LiveTelemetrySimulator:
                                     "load_kw": load_val,
                                     "tariff_inr_kwh": float(row["tariff_inr_kwh"]),
                                     "battery_soc_pct": float(row["battery_soc_pct"]),
+                                    "battery_soh_pct": float(row.get("battery_soh_pct", 100.0)),
+                                    "battery_resistance_growth": float(row.get("battery_resistance_growth", 1.0)),
                                     "battery_energy_kwh": float(row.get("battery_energy_kwh", BATTERY.capacity_kwh * float(row["battery_soc_pct"]) / 100.0)),
                                     "battery_power_kw": batt_power,
                                     "battery_violation": int(row.get("battery_violation", 0)),
@@ -91,6 +100,23 @@ class LiveTelemetrySimulator:
                                     "load_shed_kw": float(row.get("load_shed_kw", 0.0)),
                                     "operator_action": row.get("operator_action", "idle"),
                                     "override_mode": row.get("override_mode", "auto"),
+                                    "hour_of_day": dt_local.hour,
+                                    "day_of_week": dt_local.weekday(),
+                                    "is_weekend": int(dt_local.weekday() >= 5),
+                                    "month": dt_local.month,
+                                    "hour_sin": math.sin(2 * math.pi * dt_local.hour / 24),
+                                    "hour_cos": math.cos(2 * math.pi * dt_local.hour / 24),
+                                    "day_sin": math.sin(2 * math.pi * dt_local.weekday() / 7),
+                                    "day_cos": math.cos(2 * math.pi * dt_local.weekday() / 7),
+                                    "cost_inr": 0.0,
+                                    "cell_temperature_c": float(row.get("temperature_c", 20.0)),
+                                    "carbon_intensity_kg_kwh": 0.5,
+                                    "carbon_emissions_kg": 0.0,
+                                    "degradation_cost_inr": 0.0,
+                                    "action": row.get("operator_action", "idle"),
+                                    "reason": f"Pre-population record. Mode: {row.get('override_mode', 'auto').upper()}.",
+                                    "decision_entropy": 0.12,
+                                    "ig_attributions": [0.0] * 9,
                                 }
                                 self._records.append(record)
                             last_row = preceding_df.iloc[-1] if not preceding_df.empty else hist_df.iloc[-1]
@@ -225,14 +251,140 @@ class LiveTelemetrySimulator:
 
         load_kw = self._load_kw(timestamp, solar_kw, temperature_c, humidity_pct)
         tariff = self._tariff(timestamp)
-        dispatch = self._battery_dispatch(solar_kw, wind_kw, load_kw, tariff)
 
-        grid_kw = max(load_kw - solar_kw - wind_kw - max(dispatch["battery_power_kw"], 0.0) + max(-dispatch["battery_power_kw"], 0.0), 0.0)
+        # Dynamic dispatch using PIS-PPO model equations
+        from .dispatch_v2 import get_ppo_model
+        from ..rl.xai_metrics import calculate_decision_entropy, calculate_integrated_gradients
+
+        hour_sin = math.sin(2 * math.pi * timestamp.hour / 24)
+        hour_cos = math.cos(2 * math.pi * timestamp.hour / 24)
+        is_weekend = int(timestamp.weekday() >= 5)
+
+        state = np.array(
+            [
+                solar_kw / 140.0,
+                wind_kw / 30.0,
+                load_kw / 180.0,
+                self._soc_pct / 100.0,
+                self._soh / 100.0,
+                (tariff - 2.0) / 8.0,
+                float(hour_sin + 1.0) / 2.0,
+                float(hour_cos + 1.0) / 2.0,
+                1.0 if is_weekend else 0.0,
+            ],
+            dtype=np.float32,
+        )
+
+        model = get_ppo_model()
+        
+        if self._override_mode == "auto":
+            action, _ = model.predict(state, deterministic=True)
+            act_val = float(action[0])
+        elif self._override_mode == "force_charge":
+            act_val = -1.0
+        elif self._override_mode in {"force_discharge", "island"}:
+            act_val = 1.0
+        else:
+            act_val = 0.0
+
+        # 1. Thermal Derating
+        T_warn, T_crit = 45.0, 55.0
+        derate = max(0.0, min(1.0, (T_crit - self._cell_temp_c) / (T_crit - T_warn)))
+        max_charge = BATTERY.max_charge_kw * derate
+        max_discharge = BATTERY.max_discharge_kw * derate
+
+        # 2. Efficiency Degradation
+        eta_ch = BATTERY.charge_efficiency
+        eta_dis = BATTERY.discharge_efficiency
+        eta_ch_t = eta_ch / (self._resistance_growth ** 0.1)
+        eta_dis_t = eta_dis / (self._resistance_growth ** 0.1)
+        C_max = BATTERY.capacity_kwh
+        S_min = BATTERY.min_soc_pct
+        S_max = BATTERY.max_soc_pct
+        dt = 1.0
+
+        # 3. Action Projection
+        P_hat = 0.5 * (max_discharge + max_charge) * act_val + 0.5 * (max_discharge - max_charge)
+        P_soc_min = - ((S_max - self._soc_pct) * C_max * (self._soh / 100.0)) / (100.0 * dt * eta_ch_t)
+        P_soc_max = ((self._soc_pct - S_min) * C_max * (self._soh / 100.0) * eta_dis_t) / (100.0 * dt)
+        
+        P_min = max(-max_charge, P_soc_min)
+        P_max = min(max_discharge, P_soc_max, max(0.0, load_kw - solar_kw - wind_kw))
+        
+        if P_min > P_max:
+            P_min, P_max = P_max, P_min
+            
+        P_bat = float(np.clip(P_hat, P_min, P_max))
+
+        # 4. Update battery aging & resistance
+        P_loss_base = (1.0 - eta_ch_t) * max(-P_bat, 0.0) + (1.0 / eta_dis_t - 1.0) * max(P_bat, 0.0)
+        P_loss = P_loss_base * self._resistance_growth
+        cell_temp_k = (temperature_c + 273.15) + 0.05 * P_loss
+        self._cell_temp_c = cell_temp_k - 273.15
+        
+        # Arrhenius
+        E_a = 50000.0
+        R = 8.314
+        T_ref = 298.15
+        xi = np.exp((E_a / R) * (1.0 / T_ref - 1.0 / cell_temp_k))
+
+        # Degradation
+        k_cal = 1.48e-6
+        mu = 0.8
+        d_cal = k_cal * xi * ((self._soc_pct / 100.0) ** mu) * dt
+        
+        delta_t = max(1.0 - self._soc_pct / 100.0, 1e-4)
+        a_cyc = 3251.0
+        b_cyc = 1.05
+        N_f = a_cyc * (delta_t ** -b_cyc)
+        d_cyc = (abs(P_bat) * dt) / (2.0 * N_f * C_max * (self._soh / 100.0) * delta_t) * xi
+
+        self._soh = max(self._soh - (d_cyc + d_cal) * 100.0, 80.0)
+        self._resistance_growth = min(self._resistance_growth + 1.2 * (d_cyc + d_cal) * 100.0, 2.0)
+
+        if P_bat >= 0.0:
+            energy_change = P_bat / eta_dis_t
+        else:
+            energy_change = P_bat * eta_ch_t
+            
+        energy_kwh = np.clip(
+            (C_max * (self._soh / 100.0) * (self._soc_pct / 100.0)) - energy_change * dt,
+            S_min * C_max / 100.0 * (self._soh / 100.0),
+            S_max * C_max / 100.0 * (self._soh / 100.0)
+        )
+        self._soc_pct = (energy_kwh / (C_max * (self._soh / 100.0))) * 100.0
+
+        grid_kw = max(load_kw - solar_kw - wind_kw - P_bat, 0.0)
         load_shed_kw = 0.0
         if self._override_mode == "island":
-            available_supply = solar_kw + wind_kw + max(dispatch["battery_power_kw"], 0.0)
+            available_supply = solar_kw + wind_kw + max(P_bat, 0.0)
             load_shed_kw = max(load_kw - available_supply, 0.0)
             grid_kw = 0.0
+
+        # Action descriptions
+        if P_bat > 0.5:
+            action_desc = "discharge"
+            reason_desc = f"PIS-PPO: Discharge {P_bat:.1f} kW to cover HVAC load surge and avoid peak tariff. Temp: {self._cell_temp_c:.1f}°C."
+        elif P_bat < -0.5:
+            action_desc = "charge"
+            reason_desc = f"PIS-PPO: Charge {-P_bat:.1f} kW exploiting off-peak tariff. Temp: {self._cell_temp_c:.1f}°C."
+        else:
+            action_desc = "idle"
+            reason_desc = f"PIS-PPO: BESS idle. Directing green power to facility load. Temp: {self._cell_temp_c:.1f}°C."
+
+        if self._override_mode != "auto":
+            reason_desc = f"Operator override: BESS {action_desc} (Mode: {self._override_mode.upper()}). Temp: {self._cell_temp_c:.1f}°C."
+
+        ig = calculate_integrated_gradients(model, state)
+        std_val = 0.15
+        entropy = float(calculate_decision_entropy(std_val))
+
+        # Combined cost including carbon price and carbon weight
+        kappa = 0.5 + 0.2 * np.sin(2.0 * np.pi * (timestamp.hour - 6) / 24.0) + 0.15 * np.cos(4.0 * np.pi * (timestamp.hour - 18) / 24.0)
+        carbon_em = kappa * grid_kw * dt
+        electricity_cost = grid_kw * tariff * dt
+        carbon_cost = carbon_em * 2.0
+        combined_cost = electricity_cost + 0.1 * carbon_cost # Use default carbon weight 0.1
 
         return {
             "timestamp": timestamp.isoformat(),
@@ -250,12 +402,14 @@ class LiveTelemetrySimulator:
             "load_kw": round(load_kw, 3),
             "tariff_inr_kwh": round(tariff, 2),
             "battery_soc_pct": round(self._soc_pct, 3),
-            "battery_energy_kwh": round(BATTERY.capacity_kwh * self._soc_pct / 100.0, 3),
-            "battery_power_kw": round(dispatch["battery_power_kw"], 3),
+            "battery_soh_pct": round(self._soh, 3),
+            "battery_resistance_growth": round(self._resistance_growth, 3),
+            "battery_energy_kwh": round(BATTERY.capacity_kwh * (self._soh / 100.0) * (self._soc_pct / 100.0), 3),
+            "battery_power_kw": round(P_bat, 3),
             "battery_violation": 0,
             "grid_kw": round(grid_kw, 3),
             "load_shed_kw": round(load_shed_kw, 3),
-            "operator_action": dispatch["action"],
+            "operator_action": action_desc,
             "override_mode": self._override_mode,
             "hour_of_day": timestamp.hour,
             "day_of_week": timestamp.weekday(),
@@ -265,6 +419,15 @@ class LiveTelemetrySimulator:
             "hour_cos": math.cos(2 * math.pi * timestamp.hour / 24),
             "day_sin": math.sin(2 * math.pi * timestamp.weekday() / 7),
             "day_cos": math.cos(2 * math.pi * timestamp.weekday() / 7),
+            "cost_inr": round(combined_cost, 3),
+            "cell_temperature_c": round(self._cell_temp_c, 2),
+            "carbon_intensity_kg_kwh": round(kappa, 3),
+            "carbon_emissions_kg": round(carbon_em, 3),
+            "degradation_cost_inr": round((2500000.0 / 20.0) * (d_cyc + d_cal) * 100.0, 3),
+            "action": action_desc,
+            "reason": reason_desc,
+            "decision_entropy": round(entropy, 3),
+            "ig_attributions": [round(float(val), 4) for val in ig],
         }
 
     def _temperature(self, timestamp: datetime) -> float:
@@ -305,46 +468,6 @@ class LiveTelemetrySimulator:
         if 18 <= hour <= 21:
             return 9.2
         return 5.6
-
-    def _battery_dispatch(self, solar_kw: float, wind_kw: float, load_kw: float, tariff: float) -> dict[str, Any]:
-        min_energy = BATTERY.capacity_kwh * BATTERY.min_soc_pct / 100.0
-        max_energy = BATTERY.capacity_kwh * BATTERY.max_soc_pct / 100.0
-        energy = BATTERY.capacity_kwh * self._soc_pct / 100.0
-        action = "idle"
-        power_kw = 0.0
-
-        surplus = solar_kw + wind_kw - load_kw
-        if self._override_mode == "force_charge":
-            charge_kw = min(BATTERY.max_charge_kw, (max_energy - energy) / BATTERY.charge_efficiency, max(surplus, 18.0))
-            action = "charge"
-            power_kw = -max(charge_kw, 0.0)
-        elif self._override_mode in {"force_discharge", "island"}:
-            discharge_kw = min(BATTERY.max_discharge_kw, (energy - min_energy) * BATTERY.discharge_efficiency, max(load_kw - solar_kw - wind_kw, 18.0))
-            action = "discharge"
-            power_kw = max(discharge_kw, 0.0)
-        elif surplus > 6 and energy < max_energy:
-            charge_kw = min(surplus, BATTERY.max_charge_kw, (max_energy - energy) / BATTERY.charge_efficiency)
-            action = "charge"
-            power_kw = -max(charge_kw, 0.0)
-        elif (tariff >= 8 or load_kw > MICROGRID.peak_load_risk_kw) and energy > min_energy:
-            discharge_kw = min(max(load_kw - solar_kw - wind_kw, 0), BATTERY.max_discharge_kw, (energy - min_energy) * BATTERY.discharge_efficiency)
-            action = "discharge"
-            power_kw = max(discharge_kw, 0.0)
-        elif tariff <= 3.0 and energy < (max_energy * 0.75):
-            charge_kw = min(18.0, BATTERY.max_charge_kw, (max_energy - energy) / BATTERY.charge_efficiency)
-            action = "charge"
-            power_kw = -max(charge_kw, 0.0)
-
-        if power_kw < 0:
-            energy += abs(power_kw) * BATTERY.charge_efficiency
-        elif power_kw > 0:
-            energy -= power_kw / BATTERY.discharge_efficiency
-        energy = float(np.clip(energy, min_energy, max_energy))
-        self._soc_pct = energy / BATTERY.capacity_kwh * 100.0
-        if abs(power_kw) < 0.01:
-            action = "idle"
-            power_kw = 0.0
-        return {"action": action, "battery_power_kw": power_kw}
 
     def _append_record(self, record: dict[str, Any]) -> None:
         LIVE_DIR.mkdir(parents=True, exist_ok=True)

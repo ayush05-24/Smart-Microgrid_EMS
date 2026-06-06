@@ -1,0 +1,178 @@
+{
+  "forecasting": {
+    "solar_kw": {
+      "LSTM (ours)": {
+        "mae": 1.9805486938009675,
+        "pinball": 0.005933666300666507,
+        "coverage": 0.9501246882793017
+      },
+      "TCN": {
+        "mae": 2.171922584218207,
+        "pinball": 0.009474861885620583,
+        "coverage": 0.0
+      },
+      "Transformer": {
+        "mae": 1.8021955906662301,
+        "pinball": 0.007861953507591186,
+        "coverage": 0.0
+      },
+      "XGBoost": {
+        "mae": 0.05509268180229515,
+        "pinball": 0.00025100086473445573,
+        "coverage": 0.0
+      },
+      "ARIMA": {
+        "mae": 27.715808109142426,
+        "pinball": 0.1326051773079873,
+        "coverage": 0.0
+      },
+      "Naive Persistence": {
+        "mae": 4.547460759977087,
+        "pinball": 0.02071811619547449,
+        "coverage": 0.0
+      }
+    },
+    "load_kw": {
+      "LSTM (ours)": {
+        "mae": 3.856564345467555,
+        "pinball": 0.009902060692315182,
+        "coverage": 0.84500287742183
+      },
+      "TCN": {
+        "mae": 3.578353036540588,
+        "pinball": 0.014252981433497578,
+        "coverage": 0.0
+      },
+      "Transformer": {
+        "mae": 3.3082754784427992,
+        "pinball": 0.013177231076903663,
+        "coverage": 0.0
+      },
+      "XGBoost": {
+        "mae": 0.08777014981537944,
+        "pinball": 0.0003396914251587937,
+        "coverage": 0.0
+      },
+      "ARIMA": {
+        "mae": 19.266475119067874,
+        "pinball": 0.07456585644150085,
+        "coverage": 0.0
+      },
+      "Naive Persistence": {
+        "mae": 6.019319648653809,
+        "pinball": 0.023296203484197076,
+        "coverage": 0.0
+      }
+    }
+  },
+  "controllers": {
+    "Rule-based": {
+      "opex_mean": 2130143.419636672,
+      "opex_std": 5833.856319035151,
+      "opt_gap_mean": -0.9284809050157815,
+      "opt_gap_std": 0.2713286825575653,
+      "soh_mean": 0.044288407588875825,
+      "soh_std": 0.0006449075762677241,
+      "co2_mean": 252722.12562836456,
+      "co2_std": 976.7566920068347,
+      "violations": 0
+    },
+    "MILP/DP (opt.)": {
+      "opex_mean": 2153960.2671333523,
+      "opex_std": 5899.083883051267,
+      "opt_gap_mean": 0.0,
+      "opt_gap_std": 0.0,
+      "soh_mean": 8.515498921290922,
+      "soh_std": 0.12399880846968003,
+      "co2_mean": 186493.33270201398,
+      "co2_std": 720.7861609996852,
+      "violations": 0
+    },
+    "MPC": {
+      "opex_mean": 2137153.50657437,
+      "opex_std": 5853.0549512030575,
+      "opt_gap_mean": -0.6024465377974052,
+      "opt_gap_std": 0.2722215978588951,
+      "soh_mean": 9.1359561659172,
+      "soh_std": 0.1330336236638526,
+      "co2_mean": 185736.38897057553,
+      "co2_std": 717.8606163790229,
+      "violations": 0
+    },
+    "DQN": {
+      "opex_mean": 2405817.8232350238,
+      "opex_std": 6588.850018803402,
+      "opt_gap_mean": 11.892947778293674,
+      "opt_gap_std": 0.30644292512623783,
+      "soh_mean": 0.06643261138331376,
+      "soh_std": 0.0009673613644015842,
+      "co2_mean": 240086.01934694633,
+      "co2_std": 927.9188574064918,
+      "violations": 0
+    },
+    "SAC": {
+      "opex_mean": 2394946.772015562,
+      "opex_std": 6559.077304784842,
+      "opt_gap_mean": 11.387342592960579,
+      "opt_gap_std": 0.30505821648258086,
+      "soh_mean": 2.2593407576410143,
+      "soh_std": 0.03289948885719529,
+      "co2_mean": 213939.3236238681,
+      "co2_std": 826.8633603546064,
+      "violations": 0
+    },
+    "TD3": {
+      "opex_mean": 2405504.073679841,
+      "opex_std": 6587.990748104401,
+      "opt_gap_mean": 11.878355500252294,
+      "opt_gap_std": 0.30640296103148257,
+      "soh_mean": 0.41982185229108737,
+      "soh_std": 0.0061132541891904865,
+      "co2_mean": 220051.87572740723,
+      "co2_std": 850.4880277933073,
+      "violations": 0
+    },
+    "Rule-based (orig.)": {
+      "opex_mean": 1869626.8794151067,
+      "opex_std": 5120.3756912171175,
+      "opt_gap_mean": -13.044927690332353,
+      "opt_gap_std": 0.23814518468077353,
+      "soh_mean": 0.048717248347763406,
+      "soh_std": 0.0007093983338944957,
+      "co2_mean": 247667.68311579726,
+      "co2_std": 957.2215581666962,
+      "violations": 0
+    },
+    "PPO (orig., discrete)": {
+      "opex_mean": 2236650.590618505,
+      "opex_std": 6125.549134986883,
+      "opt_gap_mean": 4.025095049733425,
+      "opt_gap_std": 0.2848951166854424,
+      "soh_mean": 0.008857681517775164,
+      "soh_std": 0.00012898151525354452,
+      "co2_mean": 265358.2319097828,
+      "co2_std": 1025.594526607169,
+      "violations": 0
+    },
+    "PIS-PPO (ours)": {
+      "opex_mean": 2405485.634456427,
+      "opex_std": 6587.94024832158,
+      "opt_gap_mean": 11.877497904534684,
+      "opt_gap_std": 0.3064006123209916,
+      "soh_mean": 0.41371781167766264,
+      "soh_std": 0.006024369935911713,
+      "co2_mean": 203751.73678463633,
+      "co2_std": 787.4889146234362,
+      "violations": 0
+    }
+  },
+  "sustainability": {
+    "soh_fade_reduction_pct": 58.33,
+    "co2_reduction_kg_yr": 61606.5,
+    "peak_demand_reduction_pct": 14.82,
+    "renewable_self_consumption_improvement_pct": 22.45,
+    "reliability_unserved_energy_kwh": 0.0,
+    "explanation_fidelity_pct": 92.45,
+    "attribution_stability_pct": 95.84
+  }
+}

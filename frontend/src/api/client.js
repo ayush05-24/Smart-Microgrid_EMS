@@ -84,16 +84,16 @@ export function getForecast(hours = 24) {
   return request(`/forecast?horizon_hours=${hours}`);
 }
 
-export function getOptimization(hours = 24) {
-  return request(`/optimize?horizon_hours=${hours}`);
+export function getOptimization(hours = 24, carbonWeight = 0.1) {
+  return request(`/optimize?horizon_hours=${hours}&carbon_weight=${carbonWeight}`);
 }
 
-export function getDecisions(hours = 24) {
-  return request(`/decisions?horizon_hours=${hours}`);
+export function getDecisions(hours = 24, carbonWeight = 0.1) {
+  return request(`/decisions?horizon_hours=${hours}&carbon_weight=${carbonWeight}`);
 }
 
-export function getMetrics(hours = 168) {
-  return request(`/metrics?horizon_hours=${hours}`);
+export function getMetrics(hours = 168, carbonWeight = 0.1) {
+  return request(`/metrics?horizon_hours=${hours}&carbon_weight=${carbonWeight}`);
 }
 
 export function getAlerts(hours = 48) {
