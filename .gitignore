@@ -9,3 +9,13 @@ logs/
 .npm-cache/
 .pip-cache/
 pytest-cache-*/
+
+# Local-only academic files
+/Conference Paper.pdf
+/Microgrid_manuscript.pdf
+/Project Weaknesses.docx
+/journal_paper_final.md
+/journal_paper_final.pdf
+/journal_paper_final.tex
+/manuscript_table_data.md
+/manuscript_table_data.pdf
